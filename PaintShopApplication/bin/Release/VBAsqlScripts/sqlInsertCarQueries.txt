@@ -1,0 +1,75 @@
+insert into Alfa_Romeo select * from formula where id_car=1;
+insert into Aston_Martin select * from formula where id_car=2;
+insert into Bentley select * from formula where id_car=4;
+insert into BMW select * from formula where id_car=5;
+insert into Chery select * from formula where id_car=6;
+insert into Chrysler select * from formula where id_car=7;
+insert into Citroen select * from formula where id_car=8;
+insert into Dacia select * from formula where id_car=10;
+
+insert into Daewoo select * from formula where id_car=11;
+insert into Daihatsu select * from formula where id_car=12;
+insert into Ferrari select * from formula where id_car=14;
+insert into Fiat select * from formula where id_car=15;
+insert into Ford_America select * from formula where id_car=16;
+insert into Ford_Australia select * from formula where id_car=17;
+insert into Ford_Europe select * from formula where id_car=18;
+insert into GM select * from formula where id_car=19;
+insert into GM_Australia select * from formula where id_car=20;
+
+insert into Hino select * from formula where id_car=21;
+insert into Honda select * from formula where id_car=22;
+insert into Hummer select * from formula where id_car=23;
+insert into Hyundai select * from formula where id_car=24;
+insert into Isuzu select * from formula where id_car=25;
+insert into Iveco select * from formula where id_car=26;
+insert into Jaguar select * from formula where id_car=27;
+insert into Kia select * from formula where id_car=28;
+insert into Kia_Syria select * from formula where id_car=29;
+insert into Lada select * from formula where id_car=30;
+
+insert into Lamborghini select * from formula where id_car=31;
+insert into Lancia select * from formula where id_car=32;
+insert into Lotus select * from formula where id_car=33;
+insert into Man select * from formula where id_car=34;
+insert into Maserati select * from formula where id_car=35;
+insert into Mazda select * from formula where id_car=36;
+insert into Mercedes select * from formula where id_car=37;
+insert into Mini select * from formula where id_car=38;
+insert into Mitsubishi select * from formula where id_car=39;
+insert into Mitsubishi_Australia select * from formula where id_car=40;
+
+insert into Nissan_Australia select * from formula where id_car=43;
+insert into Opel select * from formula where id_car=44;
+insert into Peugeot select * from formula where id_car=45;
+insert into Porsche select * from formula where id_car=46;
+insert into Proton select * from formula where id_car=47;
+insert into Ral select * from formula where id_car=48;
+insert into Range_Rover select * from formula where id_car=49;
+insert into Renault select * from formula where id_car=50;
+insert into Rolls_Royce select * from formula where id_car=51;
+insert into Rover select * from formula where id_car=52;
+insert into Saab select * from formula where id_car=53;
+insert into Samsung select * from formula where id_car=54;
+
+insert into Scania select * from formula where id_car=55;
+insert into Seat select * from formula where id_car=56;
+insert into Skoda select * from formula where id_car=57;
+insert into Smart select * from formula where id_car=58;
+insert into Ssangyong select * from formula where id_car=59;
+insert into Subaru select * from formula where id_car=60;
+insert into Suzuki select * from formula where id_car=61;
+insert into Toyota select * from formula where id_car=62;
+insert into Toyota_Australia select * from formula where id_car=63;
+
+insert into Vauxhall select * from formula where id_car=64;
+insert into Volvo select * from formula where id_car=65;
+insert into Audi_VW select * from formula where id_car=75;
+insert into Nissan_Datsun select * from formula where id_car=76;
+insert into Brilliance_Auto select * from formula where id_car=77;
+insert into BYD_Auto select * from formula where id_car=78;
+insert into JAC select * from formula where id_car=79;
+insert into Geely select * from formula where id_car=80;
+insert into Haima_Auto select * from formula where id_car=81;
+
+insert into Saipa select * from formula where id_car=82;

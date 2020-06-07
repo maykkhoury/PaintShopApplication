@@ -1,0 +1,75 @@
+insert into Alfa_Romeo_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=1);
+insert into Aston_Martin_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=2);
+insert into Bentley_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=4);
+insert into BMW_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=5);
+insert into Chery_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=6);
+insert into Chrysler_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=7);
+insert into Citroen_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=8);
+insert into Dacia_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=10);
+
+insert into Daewoo_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=11);
+insert into Daihatsu_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=12);
+insert into Ferrari_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=14);
+insert into Fiat_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=15);
+insert into Ford_America_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=16);
+insert into Ford_Australia_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=17);
+insert into Ford_Europe_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=18);
+insert into GM_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=19);
+insert into GM_Australia_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=20);
+
+insert into Hino_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=21);
+insert into Honda_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=22);
+insert into Hummer_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=23);
+insert into Hyundai_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=24);
+insert into Isuzu_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=25);
+insert into Iveco_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=26);
+insert into Jaguar_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=27);
+insert into Kia_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=28);
+insert into Kia_Syria_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=29);
+insert into Lada_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=30);
+
+insert into Lamborghini_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=31);
+insert into Lancia_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=32);
+insert into Lotus_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=33);
+insert into Man_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=34);
+insert into Maserati_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=35);
+insert into Mazda_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=36);
+insert into Mercedes_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=37);
+insert into Mini_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=38);
+insert into Mitsubishi_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=39);
+insert into Mitsubishi_Australia_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=40);
+
+insert into Nissan_Australia_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=43);
+insert into Opel_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=44);
+insert into Peugeot_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=45);
+insert into Porsche_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=46);
+insert into Proton_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=47);
+insert into Ral_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=48);
+insert into Range_Rover_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=49);
+insert into Renault_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=50);
+insert into Rolls_Royce_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=51);
+insert into Rover_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=52);
+insert into Saab_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=53);
+insert into Samsung_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=54);
+
+insert into Scania_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=55);
+insert into Seat_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=56);
+insert into Skoda_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=57);
+insert into Smart_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=58);
+insert into Ssangyong_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=59);
+insert into Subaru_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=60);
+insert into Suzuki_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=61);
+insert into Toyota_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=62);
+insert into Toyota_Australia_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=63);
+
+insert into Vauxhall_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=64);
+insert into Volvo_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=65);
+insert into Audi_VW_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=75);
+insert into Nissan_Datsun_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=76);
+insert into Brilliance_Auto_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=77);
+insert into BYD_Auto_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=78);
+insert into JAC_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=79);
+insert into Geely_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=80);
+insert into Haima_Auto_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=81);
+
+insert into Saipa_formulaColor select * from formulaColor where id_formula in (select id_formula from formula where id_car=82);
