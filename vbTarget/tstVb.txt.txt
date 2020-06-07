@@ -1,0 +1,4 @@
+    id_car LONG NOT NULL,
+    carImgPath CHAR(100),
+    model CHAR(50),
+    carName CHAR(50),

@@ -1,0 +1,48 @@
+Private id_carAtt As Integer
+
+Private carImgPathAtt As String
+
+Private modelAtt As String
+
+Private carNameAtt As String
+
+
+Property id_car As Integer
+Get 
+Return id_carAtt 
+End Get 
+Set(ByVal Value As Integer) 
+id_carAtt = Value 
+End Set 
+End Property 
+
+
+Property carImgPath As String
+Get 
+Return carImgPathAtt 
+End Get 
+Set(ByVal Value As String) 
+carImgPathAtt = Value 
+End Set 
+End Property 
+
+
+Property model As String
+Get 
+Return modelAtt 
+End Get 
+Set(ByVal Value As String) 
+modelAtt = Value 
+End Set 
+End Property 
+
+
+Property carName As String
+Get 
+Return carNameAtt 
+End Get 
+Set(ByVal Value As String) 
+carNameAtt = Value 
+End Set 
+End Property 
+
