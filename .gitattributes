@@ -1,0 +1,2 @@
+PaintShopApplication/bin/Release/dbPaintShop.mdb filter=lfs diff=lfs merge=lfs -text
+PaintShopApplication/bin/Debug/dbPaintShop.mdb filter=lfs diff=lfs merge=lfs -text
