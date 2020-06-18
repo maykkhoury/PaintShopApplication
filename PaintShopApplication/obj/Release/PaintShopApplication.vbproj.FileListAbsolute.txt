@@ -215,3 +215,37 @@ D:\paintshop\PaintShopApplication(800-600) - opt repaired\PaintShopApplication\b
 D:\paintshop\PaintShopApplication(800-600) - opt repaired\PaintShopApplication\bin\Release\Microsoft.Office.Interop.Excel.dll
 D:\paintshop\PaintShopApplication(800-600) - opt repaired\PaintShopApplication\obj\Release\garageApp.exe.manifest
 D:\paintshop\PaintShopApplication(800-600) - opt repaired\PaintShopApplication\obj\Release\garageApp.application
+D:\paintshop\PaintShopApplication\PaintShopApplication\bin\Release\garageApp.exe.config
+D:\paintshop\PaintShopApplication\PaintShopApplication\obj\Release\PaintShopApplication.vbproj.ResolveComReference.cache
+D:\paintshop\PaintShopApplication\PaintShopApplication\obj\Release\garageApp.exe
+D:\paintshop\PaintShopApplication\PaintShopApplication\obj\Release\garageApp.xml
+D:\paintshop\PaintShopApplication\PaintShopApplication\obj\Release\garageApp.pdb
+D:\paintshop\PaintShopApplication\PaintShopApplication\bin\Release\garageApp.exe.manifest
+D:\paintshop\PaintShopApplication\PaintShopApplication\bin\Release\garageApp.application
+D:\paintshop\PaintShopApplication\PaintShopApplication\bin\Release\garageApp.exe
+D:\paintshop\PaintShopApplication\PaintShopApplication\bin\Release\garageApp.pdb
+D:\paintshop\PaintShopApplication\PaintShopApplication\bin\Release\garageApp.xml
+D:\paintshop\PaintShopApplication\PaintShopApplication\bin\Release\Microsoft.Office.Interop.Excel.dll
+D:\paintshop\PaintShopApplication\PaintShopApplication\obj\Release\garageApp.Form1.resources
+D:\paintshop\PaintShopApplication\PaintShopApplication\obj\Release\garageApp.assignColorByCode.resources
+D:\paintshop\PaintShopApplication\PaintShopApplication\obj\Release\garageApp.carCodeLocator.resources
+D:\paintshop\PaintShopApplication\PaintShopApplication\obj\Release\garageApp.colorPrice.resources
+D:\paintshop\PaintShopApplication\PaintShopApplication\obj\Release\garageApp.importPrices.resources
+D:\paintshop\PaintShopApplication\PaintShopApplication\obj\Release\garageApp.login.resources
+D:\paintshop\PaintShopApplication\PaintShopApplication\obj\Release\garageApp.saveClientFormula.resources
+D:\paintshop\PaintShopApplication\PaintShopApplication\obj\Release\garageApp.edit.resources
+D:\paintshop\PaintShopApplication\PaintShopApplication\obj\Release\garageApp.formComposed.resources
+D:\paintshop\PaintShopApplication\PaintShopApplication\obj\Release\garageApp.transation.resources
+D:\paintshop\PaintShopApplication\PaintShopApplication\obj\Release\garageApp.garageHome.resources
+D:\paintshop\PaintShopApplication\PaintShopApplication\obj\Release\garageApp.getlabelsForm.resources
+D:\paintshop\PaintShopApplication\PaintShopApplication\obj\Release\garageApp.getterSetter.resources
+D:\paintshop\PaintShopApplication\PaintShopApplication\obj\Release\garageApp.imagePreview.resources
+D:\paintshop\PaintShopApplication\PaintShopApplication\obj\Release\garageApp.Resources.resources
+D:\paintshop\PaintShopApplication\PaintShopApplication\obj\Release\garageApp.Settings.resources
+D:\paintshop\PaintShopApplication\PaintShopApplication\obj\Release\garageApp.CoolPrintPreviewDialog.resources
+D:\paintshop\PaintShopApplication\PaintShopApplication\obj\Release\garageApp.SettingsHQ.resources
+D:\paintshop\PaintShopApplication\PaintShopApplication\obj\Release\garageApp.SplashScreen1.resources
+D:\paintshop\PaintShopApplication\PaintShopApplication\obj\Release\garageApp.updateForm.resources
+D:\paintshop\PaintShopApplication\PaintShopApplication\obj\Release\PaintShopApplication.vbproj.GenerateResource.Cache
+D:\paintshop\PaintShopApplication\PaintShopApplication\obj\Release\garageApp.exe.manifest
+D:\paintshop\PaintShopApplication\PaintShopApplication\obj\Release\garageApp.application

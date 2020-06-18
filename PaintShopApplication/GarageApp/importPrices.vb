@@ -97,16 +97,23 @@ Public Class importPrices
                 Dim thisColorDB As Color()
                 'msgbox("******************************readExcelFile readExcelFileHelper showAlternativeName:" & chosenGarage.showAlternativeName)
 
-                Dim encColorName As String = encryptData(colorName.Trim, password & chosenGarage.id_garage)
+                Dim encColorName As String = encryptData(colorName.Trim, password & chosenGarage.garage_name)
                 If chosenGarage.showAlternativeName Then
                     Dim whereClause As String = "WHERE (name_color_alternative)='" & encColorName & "'"
-                    whereClause &= " or ((name_color_alternative is null or name_color_alternative='') and (name_color)='" & encColorName & "')"
+                    whereClause &= " or ((name_color_alternative is null or name_color_alternative='' or name_color_alternative='nSiEtllK6oE=') and (name_color)='" & encColorName & "')"
                     'msgbox("******************************readExcelFile readExcelFileHelper :" & whereClause)
                     thisColorDB = getColors(whereClause)
                 Else
-                    Dim whereClause As String = "WHERE (name_color)='" & encColorName & "'"
-                    'msgbox("******************************readExcelFile readExcelFileHelper :" & whereClause)
-                    thisColorDB = getColors(whereClause)
+                    If chosenGarage.showAlternativeName2 Then
+                        Dim whereClause As String = "WHERE (name_color_alternative2)='" & encColorName & "'"
+                        whereClause &= " or ((name_color_alternative2 is null or name_color_alternative2='' or name_color_alternative2='nSiEtllK6oE=') and (name_color)='" & encColorName & "')"
+                        'msgbox("******************************readExcelFile readExcelFileHelper :" & whereClause)
+                        thisColorDB = getColors(whereClause)
+                    Else
+                        Dim whereClause As String = "WHERE (name_color)='" & encColorName & "'"
+                        'msgbox("******************************readExcelFile readExcelFileHelper :" & whereClause)
+                        thisColorDB = getColors(whereClause)
+                    End If
                 End If
                 'msgbox("******************************readExcelFile readExcelFileHelper got color")
                 Dim thisColor As Color = Nothing

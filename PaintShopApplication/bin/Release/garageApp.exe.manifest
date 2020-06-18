@@ -53,14 +53,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="garageApp.exe" size="1827840">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="garageApp.exe" size="1828352">
       <assemblyIdentity name="garageApp" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>ONxFhm01TfD4ySZ9lg3ZSlI3oI0=</dsig:DigestValue>
+        <dsig:DigestValue>+Akzztg4GiFYslwcdSJWJ7udUUc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
