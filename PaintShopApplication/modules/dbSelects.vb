@@ -990,69 +990,7 @@ Module dbSelects
 
         Return formulaColorTab
     End Function
-    Private Function garageEquationOLD(ByVal formulaColorTab As FormulaColor()) As FormulaColor()
-        Dim listOfColorCode As String()
-        ReDim listOfColorCode(19)
-        listOfColorCode(0) = "4101"
-        listOfColorCode(1) = "4206"
-        listOfColorCode(2) = "4704"
-        listOfColorCode(3) = "4705"
-        listOfColorCode(4) = "4107"
-        listOfColorCode(5) = "4306"
-        listOfColorCode(6) = "4307"
-        listOfColorCode(7) = "4308"
-        listOfColorCode(8) = "4403"
-        listOfColorCode(9) = "4405"
-        listOfColorCode(10) = "4407"
-        listOfColorCode(11) = "4504"
-        listOfColorCode(12) = "4507"
-        listOfColorCode(13) = "4508"
-        listOfColorCode(14) = "4605"
-        listOfColorCode(15) = "4606"
-        listOfColorCode(16) = "4607"
-        listOfColorCode(17) = "4707"
-        listOfColorCode(18) = "4708"
-        listOfColorCode(19) = "4805"
-
-        Dim listOfColorCodeToUse As String()
-        ReDim listOfColorCodeToUse(2)
-        listOfColorCodeToUse(0) = "4010"
-        'listOfColorCodeToUse(0) = "4010"
-        'listOfColorCodeToUse(1) = "4110"
-        'listOfColorCodeToUse(2) = "4002"
-
-        Dim i As Integer
-        For i = 0 To formulaColorTab.Length - 1
-            Dim curColor As Color = getColorById(formulaColorTab(i).id_color)
-            'test if exist in listOfColorCode
-            Dim j As Integer
-            For j = 0 To listOfColorCode.Length - 1
-                If listOfColorCode(j) = curColor.colorCode.Trim Then
-                    Dim curQty As Double = formulaColorTab(i).quantite
-                    'find the color to use, the one that contains enough qty
-                    Dim colorToUse As Color = Nothing
-                    Dim k As Integer
-                    For k = 0 To listOfColorCodeToUse.Length - 1
-                        Dim index As Integer = findIndexOfColorToUse(formulaColorTab, listOfColorCodeToUse(k))
-                        If index <> -1 Then 'colorToUse exist, else continue to next colorToUse
-                            Dim qty As Double = formulaColorTab(index).quantite
-                            If qty >= curQty Then 'colorToUse has enoughQty, else continue to next colorToUse
-                                formulaColorTab(i).quantite = curQty * 2 'double the qty of the colorCode to replace
-                                formulaColorTab(index).quantite = formulaColorTab(index).quantite - curQty 'substract the qty of the colorCode to replace
-                                Exit For
-                            End If
-                        End If
-                    Next
-
-                    Exit For
-                End If
-            Next
-
-        Next
-
-        Return formulaColorTab
-    End Function
-
+   
 
     Private Function eqDiluted(ByVal formulaColorTab As FormulaColor()) As FormulaColor()
         Dim initTotalQty As Double = 0
