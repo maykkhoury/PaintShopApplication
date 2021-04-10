@@ -643,21 +643,21 @@ Public Class edit
             'apply formula:
             '(quantity * priceUsed (in Litre)) / masse_volumique * volume
             Dim curColorPrice As Double '= colorUnitPrice * quantity
-            If chosenGarage.apply_equation2 Then
-                If color.masse_volumique_ext > 0 Then
-                    curColorPrice = (quantity * priceUsed) / (color.masse_volumique_ext)
-                Else
-                    curColorPrice = 0
-                End If
+            'If chosenGarage.apply_equation2 Then
+            'If color.masse_volumique_ext > 0 Then
+            'curColorPrice = (quantity * priceUsed) / (color.masse_volumique_ext)
+            'Else
+            'curColorPrice = 0
+            'End If
 
+            'Else
+            If color.masse_volumique > 0 Then
+                curColorPrice = (quantity * priceUsed) / (color.masse_volumique)
             Else
-                If color.masse_volumique > 0 Then
-                    curColorPrice = (quantity * priceUsed) / (color.masse_volumique)
-                Else
-                    curColorPrice = 0
-                End If
-
+                curColorPrice = 0
             End If
+
+            'End If
 
 
             curColorPrice = convertToChosenCurrency(curColorPrice, getCurrency(currencyUsed).rateToDollar)
@@ -697,7 +697,7 @@ Public Class edit
                 Catch ex As Exception
 
                 End Try
-                
+
             End If
             Dim txtQuantityDetail As New TextBox
             txtQuantityDetail.Name = "txtQuantityDetail" & i
@@ -706,7 +706,7 @@ Public Class edit
                 txtQuantityDetail.ReadOnly = True
             Else
                 txtQuantityDetail.ReadOnly = False
-            End If 
+            End If
             txtQuantityDetail.Visible = True
             txtQuantityDetail.Top = txtQuantityDetailHidden.Top + i * txtQuantityDetailHidden.Height
             txtQuantityDetail.Left = txtQuantityDetailHidden.Left

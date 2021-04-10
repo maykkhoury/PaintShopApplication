@@ -654,18 +654,10 @@ Module dbSelects
         End If
         ''''''''''''''''''''''''''''''''
         Dim qty4201 As Double = findQuantityOfColorInformula(formulaColorTab, "4201")
-        ' Dim qty4080 As Double = findQuantityOfColorInformula(formulaColorTab, "4080")
-        'Dim qty4082 As Double = findQuantityOfColorInformula(formulaColorTab, "4082")
-        ' Dim qty4060 As Double = findQuantityOfColorInformula(formulaColorTab, "4060")
 
         printFormula(formulaColorTab, "before equations")
 
         If typeFormula = "LS" Then
-            'formulaColorTab = applyEquationLS(formulaColorTab, "01")
-            'formulaColorTab = applyEquationLS(formulaColorTab, "10") open Later
-
-            'the queation is applied on creation
-            'formulaColorTab = applyEquationLS_tmp(formulaColorTab)
 
             'sort descending
             formulaColorTab = sortDescending(formulaColorTab)
@@ -674,40 +666,15 @@ Module dbSelects
                 formulaColorTab = applyEquationBC(formulaColorTab, "4002", "4110")
                 printFormula(formulaColorTab, "after applyEquationBC")
             End If
-            ' Dim applyEquation As Boolean = chosenGarage.apply_equation
-            ' If applyEquation And garageHome.chkUseOldDb.Checked = False Then
+
             If chosenGarage.apply_equation Then
-                'formulaColorTab = garageEquation(formulaColorTab, False)
-                formulaColorTab = eqDoubleCBXB_50per4010(formulaColorTab)
+                formulaColorTab = eqDiluted(formulaColorTab)
                 printFormula(formulaColorTab, "after eqDoubleCBXB_50per4010")
-            Else
-                If chosenGarage.apply_equation2 Or chosenGarage.apply_equation4 Then
-                    formulaColorTab = eqDoubleCBXB_50per4010Extended(formulaColorTab)
-                    printFormula(formulaColorTab, "after eqDoubleCBXB_50per4010Extended")
-                    If chosenGarage.apply_equation4 Then
-                        formulaColorTab = extendedOptimization(formulaColorTab, isCouche)
-                        printFormula(formulaColorTab, "after extendedOptimization")
-                    End If
-                Else
-                    If chosenGarage.apply_equation3 Then
-                        formulaColorTab = eqDoubleCBXB_50per4010_no4581_no4091(formulaColorTab)
-                        printFormula(formulaColorTab, "after eqDoubleCBXB_50per4010_no4581_no4091")
-                    End If
-                End If
             End If
         End If
-        If chosenGarage.apply_equation5 And qty4201 >= 180 And isApply4201_180Eq Then
-            formulaColorTab = eqDivedBy2If4201BigThenOrEq180(formulaColorTab)
-            printFormula(formulaColorTab, "after eqDivedBy2If4201BigThenOrEq180")
-        End If
-
-        If chosenGarage.apply_equation6 Then
-            formulaColorTab = eq4080_4082_4060(formulaColorTab)
-            printFormula(formulaColorTab, "after eq4080_4082_4060")
-        End If
+      
 
         'reapply the sorting in case it was corrupted with the other eq
-
         If typeFormula = "BC" Then
             formulaColorTab = applyEquationBC(formulaColorTab, "4002", "4110")
             printFormula(formulaColorTab, "after applyEquationBC 2")
@@ -1087,213 +1054,48 @@ Module dbSelects
     End Function
 
 
-    Private Function extendedOptimization(ByVal formulaColorTab As FormulaColor(), ByVal isCouche As Boolean) As FormulaColor()
-
+    Private Function eqDiluted(ByVal formulaColorTab As FormulaColor()) As FormulaColor()
         Dim initTotalQty As Double = 0
         Dim i As Integer
         For i = 0 To formulaColorTab.Length - 1
             initTotalQty += formulaColorTab(i).quantite
         Next
 
-        'remove 4002
+
+
+        'decrease 50% 4010
+        Dim index4010 As Integer = findIndexOfColorToUse(formulaColorTab, "4010")
+        If index4010 <> -1 Then
+            formulaColorTab(index4010).quantite = formulaColorTab(index4010).quantite / 2
+        End If
+        ''''''''''''''''''''''''''''''''''''''''
+
         Dim MyArray As New ArrayList
+
         For i = 0 To formulaColorTab.Length - 1
             Dim curColor As Color = getColorById(formulaColorTab(i).id_color)
-            If Not curColor.colorCode.Trim = "4002" Then
+            '' remove 4002
+            If curColor.colorCode <> "4002" Then
                 MyArray.Add(formulaColorTab(i))
+
             End If
         Next
-        formulaColorTab = DirectCast(MyArray.ToArray(GetType(FormulaColor)), FormulaColor())
-
-        'decrease 50% 4010 in case it wasn't couche
-        Dim index4010 As Integer = findIndexOfColorToUse(formulaColorTab, "4010")
-        If index4010 <> -1 And Not isCouche Then
-            formulaColorTab(index4010).quantite = formulaColorTab(index4010).quantite / 2
-        End If
-        ''''''''''''''''''''''''''''''''''''''''
-
-
-        Dim finalTotalQty As Double = 0
-        For i = 0 To formulaColorTab.Length - 1
-            finalTotalQty += formulaColorTab(i).quantite
-        Next
-
-        'regle de trois
-        For i = 0 To formulaColorTab.Length - 1
-            Dim curQty As Double = formulaColorTab(i).quantite
-            formulaColorTab(i).quantite = curQty * initTotalQty / finalTotalQty
-        Next
-
-        Return formulaColorTab
-    End Function
-    Private Function eqDoubleCBXB_50per4010Extended(ByVal formulaColorTab As FormulaColor()) As FormulaColor()
-
-        Dim initTotalQty As Double = 0
-        Dim i As Integer
-        For i = 0 To formulaColorTab.Length - 1
-            initTotalQty += formulaColorTab(i).quantite
-        Next
-
-
-
-        'decrease 50% 4010
-        Dim index4010 As Integer = findIndexOfColorToUse(formulaColorTab, "4010")
-        If index4010 <> -1 Then
-            formulaColorTab(index4010).quantite = formulaColorTab(index4010).quantite / 2
-        End If
-        ''''''''''''''''''''''''''''''''''''''''
-
-        'multiply *2 all the color below if they exist
-        Dim listOfColorCode As String()
-        ReDim listOfColorCode(33)
-        listOfColorCode(0) = "4091"
-        listOfColorCode(1) = "4101"
-        listOfColorCode(2) = "4206"
-        listOfColorCode(3) = "4581"
-        'listOfColorCode(4) = "4704"
-        listOfColorCode(4) = "4705"
-        listOfColorCode(5) = "4107"
-        listOfColorCode(6) = "4306"
-        listOfColorCode(7) = "4307"
-        listOfColorCode(8) = "4308"
-        listOfColorCode(9) = "4403"
-        listOfColorCode(10) = "4405"
-        listOfColorCode(11) = "4407"
-        listOfColorCode(12) = "4504"
-        listOfColorCode(13) = "4507"
-        listOfColorCode(14) = "4508"
-        listOfColorCode(15) = "4605"
-        listOfColorCode(16) = "4606"
-        listOfColorCode(17) = "4607"
-        listOfColorCode(18) = "4707"
-        listOfColorCode(19) = "4708"
-        listOfColorCode(20) = "4805"
-        listOfColorCode(21) = "4111"
-        listOfColorCode(22) = "4211"
-        listOfColorCode(23) = "4411"
-        listOfColorCode(24) = "4425"
-        listOfColorCode(25) = "4436"
-        listOfColorCode(26) = "4511"
-        listOfColorCode(27) = "4525"
-        listOfColorCode(28) = "4526"
-        listOfColorCode(29) = "4528"
-        listOfColorCode(30) = "4711"
-        listOfColorCode(31) = "4811"
-        listOfColorCode(32) = "4910"
-
-
-
-        For i = 0 To formulaColorTab.Length - 1
-            Dim curColor As Color = getColorById(formulaColorTab(i).id_color)
-            '' if color 4002 divide the qty by 2
-            If curColor.colorCode = "4002" Then
-                formulaColorTab(i).quantite = formulaColorTab(i).quantite / 2
-            End If
-
-            'test if exist in listOfColorCode
-            Dim j As Integer
-            For j = 0 To listOfColorCode.Length - 1
-                If listOfColorCode(j) = curColor.colorCode.Trim Then
-                    formulaColorTab(i).quantite = formulaColorTab(i).quantite * 2
-                    Exit For
-                End If
-            Next
-        Next
-
+        Dim resultformulaColorTab As FormulaColor()
+        resultformulaColorTab = DirectCast(MyArray.ToArray(GetType(FormulaColor)), FormulaColor())
         ''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-
-
         Dim finalTotalQty As Double = 0
-        For i = 0 To formulaColorTab.Length - 1
-            finalTotalQty += formulaColorTab(i).quantite
+        For i = 0 To resultformulaColorTab.Length - 1
+            finalTotalQty += resultformulaColorTab(i).quantite
         Next
 
         'regle de trois
-        For i = 0 To formulaColorTab.Length - 1
-            Dim curQty As Double = formulaColorTab(i).quantite
-            formulaColorTab(i).quantite = curQty * initTotalQty / finalTotalQty
+        For i = 0 To resultformulaColorTab.Length - 1
+            Dim curQty As Double = resultformulaColorTab(i).quantite
+            resultformulaColorTab(i).quantite = curQty * initTotalQty / finalTotalQty
         Next
 
-        Return formulaColorTab
-    End Function
-
-    Private Function eqDoubleCBXB_50per4010(ByVal formulaColorTab As FormulaColor()) As FormulaColor()
-        Dim initTotalQty As Double = 0
-        Dim i As Integer
-        For i = 0 To formulaColorTab.Length - 1
-            initTotalQty += formulaColorTab(i).quantite
-        Next
-
-
-
-        'decrease 50% 4010
-        Dim index4010 As Integer = findIndexOfColorToUse(formulaColorTab, "4010")
-        If index4010 <> -1 Then
-            formulaColorTab(index4010).quantite = formulaColorTab(index4010).quantite / 2
-        End If
-        ''''''''''''''''''''''''''''''''''''''''
-
-        'multiply *2 all the color below if they exist
-        Dim listOfColorCode As String()
-        ReDim listOfColorCode(21)
-        listOfColorCode(0) = "4091"
-        listOfColorCode(1) = "4101"
-        listOfColorCode(2) = "4206"
-        listOfColorCode(3) = "4581"
-        'listOfColorCode(4) = "4704"
-        listOfColorCode(4) = "4705"
-        listOfColorCode(5) = "4107"
-        listOfColorCode(6) = "4306"
-        listOfColorCode(7) = "4307"
-        listOfColorCode(8) = "4308"
-        listOfColorCode(9) = "4403"
-        listOfColorCode(10) = "4405"
-        listOfColorCode(11) = "4407"
-        listOfColorCode(12) = "4504"
-        listOfColorCode(13) = "4507"
-        listOfColorCode(14) = "4508"
-        listOfColorCode(15) = "4605"
-        listOfColorCode(16) = "4606"
-        listOfColorCode(17) = "4607"
-        listOfColorCode(18) = "4707"
-        listOfColorCode(19) = "4708"
-        listOfColorCode(20) = "4805"
-
-
-        For i = 0 To formulaColorTab.Length - 1
-            Dim curColor As Color = getColorById(formulaColorTab(i).id_color)
-            '' if color 4002 divide the qty by 2
-            If curColor.colorCode = "4002" Then
-                formulaColorTab(i).quantite = formulaColorTab(i).quantite / 2
-            End If
-
-            'test if exist in listOfColorCode
-            Dim j As Integer
-            For j = 0 To listOfColorCode.Length - 1
-                If listOfColorCode(j) = curColor.colorCode.Trim Then
-                    formulaColorTab(i).quantite = formulaColorTab(i).quantite * 2
-                    Exit For
-                End If
-            Next
-        Next
-
-        ''''''''''''''''''''''''''''''''''''''''''''''''''''''
-
-
-
-        Dim finalTotalQty As Double = 0
-        For i = 0 To formulaColorTab.Length - 1
-            finalTotalQty += formulaColorTab(i).quantite
-        Next
-
-        'regle de trois
-        For i = 0 To formulaColorTab.Length - 1
-            Dim curQty As Double = formulaColorTab(i).quantite
-            formulaColorTab(i).quantite = curQty * initTotalQty / finalTotalQty
-        Next
-
-        Return formulaColorTab
+        Return resultformulaColorTab
     End Function
 
     Private Function findQuantityOfColorInformula(ByVal formulaColorTab As FormulaColor(), ByVal colorCode As String) As Double
@@ -1304,194 +1106,6 @@ Module dbSelects
         Dim qty As Double = formulaColorTab(indexColor).quantite
 
         Return qty
-    End Function
-    Private Function eq4080_4082_4060(ByVal formulaColorTab As FormulaColor()) As FormulaColor()
-
-        ''''' checking the existance and the quanty of 4201 is done before
-        ''''''''''''''''''''''''''''''''''''''''
-
-        Dim initTotalQty As Double = 0
-        Dim i As Integer
-        For i = 0 To formulaColorTab.Length - 1
-            initTotalQty += formulaColorTab(i).quantite
-        Next
-
-
-
-        'multiply by 1.25 all the color below if they exist
-        Dim listOfColorCode As String()
-        ReDim listOfColorCode(11)
-        listOfColorCode(0) = "4080"
-        listOfColorCode(1) = "4082"
-        listOfColorCode(2) = "4060"
-
-
-        For i = 0 To formulaColorTab.Length - 1
-            Dim curColor As Color = getColorById(formulaColorTab(i).id_color)
-
-            'test if exist in listOfColorCode
-            Dim j As Integer
-            For j = 0 To listOfColorCode.Length - 1
-                If listOfColorCode(j) = curColor.colorCode.Trim Then
-                    formulaColorTab(i).quantite = formulaColorTab(i).quantite * 1.25
-                    Exit For
-                End If
-            Next
-        Next
-        ''''''''''''''''''''''''''''''''''''''''''''''''''''''
-
-
-
-        Dim finalTotalQty As Double = 0
-        For i = 0 To formulaColorTab.Length - 1
-            finalTotalQty += formulaColorTab(i).quantite
-        Next
-
-        'regle de trois
-        For i = 0 To formulaColorTab.Length - 1
-            Dim curQty As Double = formulaColorTab(i).quantite
-            formulaColorTab(i).quantite = curQty * initTotalQty / finalTotalQty
-        Next
-
-        Return formulaColorTab
-    End Function
-
-    Private Function eqDivedBy2If4201BigThenOrEq180(ByVal formulaColorTab As FormulaColor()) As FormulaColor()
-
-        ''''' checking the existance and the quanty of 4201 is done before
-        ''''''''''''''''''''''''''''''''''''''''
-
-        Dim initTotalQty As Double = 0
-        Dim i As Integer
-        For i = 0 To formulaColorTab.Length - 1
-            initTotalQty += formulaColorTab(i).quantite
-        Next
-
-
-
-        'dived by 2 all the color below if they exist
-        Dim listOfColorCode As String()
-        ReDim listOfColorCode(11)
-        listOfColorCode(0) = "4025"
-        listOfColorCode(1) = "4640"
-        listOfColorCode(2) = "4440"
-        listOfColorCode(3) = "4047"
-        listOfColorCode(4) = "4041"
-        listOfColorCode(5) = "4188"
-        listOfColorCode(6) = "4084"
-        listOfColorCode(7) = "4082"
-        listOfColorCode(8) = "4030"
-        listOfColorCode(9) = "4985"
-        listOfColorCode(10) = "4934"
-
-
-
-        For i = 0 To formulaColorTab.Length - 1
-            Dim curColor As Color = getColorById(formulaColorTab(i).id_color)
-
-            'test if exist in listOfColorCode
-            Dim j As Integer
-            For j = 0 To listOfColorCode.Length - 1
-                If listOfColorCode(j) = curColor.colorCode.Trim Then
-                    formulaColorTab(i).quantite = formulaColorTab(i).quantite / 2
-                    Exit For
-                End If
-            Next
-        Next
-        ''''''''''''''''''''''''''''''''''''''''''''''''''''''
-
-
-
-        Dim finalTotalQty As Double = 0
-        For i = 0 To formulaColorTab.Length - 1
-            finalTotalQty += formulaColorTab(i).quantite
-        Next
-
-        'regle de trois
-        For i = 0 To formulaColorTab.Length - 1
-            Dim curQty As Double = formulaColorTab(i).quantite
-            formulaColorTab(i).quantite = curQty * initTotalQty / finalTotalQty
-        Next
-
-        Return formulaColorTab
-    End Function
-    Private Function eqDoubleCBXB_50per4010_no4581_no4091(ByVal formulaColorTab As FormulaColor()) As FormulaColor()
-
-        Dim initTotalQty As Double = 0
-        Dim i As Integer
-        For i = 0 To formulaColorTab.Length - 1
-            initTotalQty += formulaColorTab(i).quantite
-        Next
-
-
-
-        'decrease 50% 4010
-        Dim index4010 As Integer = findIndexOfColorToUse(formulaColorTab, "4010")
-        If index4010 <> -1 Then
-            formulaColorTab(index4010).quantite = formulaColorTab(index4010).quantite / 2
-        End If
-        ''''''''''''''''''''''''''''''''''''''''
-
-        'multiply *2 all the color below if they exist
-        Dim listOfColorCode As String()
-        ReDim listOfColorCode(19)
-        'listOfColorCode(0) = "4091"
-        listOfColorCode(0) = "4101"
-        listOfColorCode(1) = "4206"
-        'listOfColorCode(3) = "4581"
-        'listOfColorCode(4) = "4704"
-        listOfColorCode(2) = "4705"
-        listOfColorCode(3) = "4107"
-        listOfColorCode(4) = "4306"
-        listOfColorCode(5) = "4307"
-        listOfColorCode(6) = "4308"
-        listOfColorCode(7) = "4403"
-        listOfColorCode(8) = "4405"
-        listOfColorCode(9) = "4407"
-        listOfColorCode(10) = "4504"
-        listOfColorCode(11) = "4507"
-        listOfColorCode(12) = "4508"
-        listOfColorCode(13) = "4605"
-        listOfColorCode(14) = "4606"
-        listOfColorCode(15) = "4607"
-        listOfColorCode(16) = "4707"
-        listOfColorCode(17) = "4708"
-        listOfColorCode(18) = "4805"
-
-
-        For i = 0 To formulaColorTab.Length - 1
-            Dim curColor As Color = getColorById(formulaColorTab(i).id_color)
-            '' if color 4002 divide the qty by 2
-            If curColor.colorCode = "4002" Then
-                formulaColorTab(i).quantite = formulaColorTab(i).quantite / 2
-            End If
-
-            'test if exist in listOfColorCode
-            Dim j As Integer
-            For j = 0 To listOfColorCode.Length - 1
-                If listOfColorCode(j) = curColor.colorCode.Trim Then
-                    formulaColorTab(i).quantite = formulaColorTab(i).quantite * 2
-                    Exit For
-                End If
-            Next
-        Next
-
-        ''''''''''''''''''''''''''''''''''''''''''''''''''''''
-
-
-
-        Dim finalTotalQty As Double = 0
-        For i = 0 To formulaColorTab.Length - 1
-            finalTotalQty += formulaColorTab(i).quantite
-        Next
-
-        'regle de trois
-        For i = 0 To formulaColorTab.Length - 1
-            Dim curQty As Double = formulaColorTab(i).quantite
-            formulaColorTab(i).quantite = curQty * initTotalQty / finalTotalQty
-        Next
-
-        Return formulaColorTab
     End Function
 
     Private Function findIndexOfColorToUse(ByVal formulaColorTab As FormulaColor(), ByVal listOfColorCodeToUse As String) As Integer
@@ -2533,12 +2147,10 @@ Module dbSelects
                     End If
 
                     newGarage.apply_equation = False
-                    newGarage.apply_equation2 = False
+
                     If Not DR.Item("apply_equation") Is DBNull.Value Then
                         Dim appEqDB As String = DR.Item("apply_equation")
                         Dim appEq As Integer = 0
-                        Dim eqq5 As Boolean = False
-                        Dim eqq6 As Boolean = False
 
                         If appEqDB.IndexOf("+") = -1 Then
                             appEq = Integer.Parse(appEqDB)
@@ -2546,37 +2158,16 @@ Module dbSelects
                             Try
                                 appEq = Integer.Parse(appEqDB.Substring(0, appEqDB.IndexOf("+")))
 
-                                If appEqDB.Substring(appEqDB.IndexOf("+") + 1).Contains("eq6") Then
-                                    Dim temp As String = (appEqDB.Substring(appEqDB.IndexOf("+") + 1))
-                                    eqq5 = Boolean.Parse(temp.Substring(0, temp.IndexOf("eq6")))
-                                    eqq6 = Boolean.Parse(temp.Substring(temp.IndexOf("eq6") + 3))
-                                Else
-                                    eqq5 = Boolean.Parse(appEqDB.Substring(appEqDB.IndexOf("+") + 1))
-                                End If
-
                             Catch ex As Exception
                                 MsgBox("Verify garage data (Appy eq field)", MsgBoxStyle.Exclamation)
                                 Throw ex
                             End Try
                         End If
 
-                        newGarage.apply_equation5 = eqq5
-                        newGarage.apply_equation6 = eqq6
 
                         If appEq = 1 Then
                             newGarage.apply_equation = True
-                        Else
-                            If appEq = 2 Then
-                                newGarage.apply_equation2 = True
-                            Else
-                                If appEq = 3 Then
-                                    newGarage.apply_equation3 = True
-                                Else
-                                    If appEq = 4 Then
-                                        newGarage.apply_equation4 = True
-                                    End If
-                                End If
-                            End If
+
                         End If
                     End If
 
@@ -2655,46 +2246,25 @@ Module dbSelects
                     End If
 
                     garage.apply_equation = False
-                    garage.apply_equation2 = False
                     If Not DR.Item("apply_equation") Is DBNull.Value Then
                         Dim appEqDB As String = DR.Item("apply_equation")
                         Dim appEq As Integer = 0
-                        Dim eqq5 As Boolean = False
-                        Dim eqq6 As Boolean = False
                         If appEqDB.IndexOf("+") = -1 Then
                             appEq = Integer.Parse(appEqDB)
                         Else
                             Try
                                 appEq = Integer.Parse(appEqDB.Substring(0, appEqDB.IndexOf("+")))
-                                If appEqDB.Substring(appEqDB.IndexOf("+") + 1).Contains("eq6") Then
-                                    Dim temp As String = (appEqDB.Substring(appEqDB.IndexOf("+") + 1))
-                                    eqq5 = Boolean.Parse(temp.Substring(0, temp.IndexOf("eq6")))
-                                    eqq6 = Boolean.Parse(temp.Substring(temp.IndexOf("eq6") + 3))
-                                Else
-                                    eqq5 = Boolean.Parse(appEqDB.Substring(appEqDB.IndexOf("+") + 1))
-                                End If
+                               
                             Catch ex As Exception
                                 MsgBox("Verify garage data (Appy eq field)", MsgBoxStyle.Exclamation)
                                 Throw ex
                             End Try
                         End If
 
-                        garage.apply_equation5 = eqq5
-                        garage.apply_equation6 = eqq6
+                       
                         If appEq = 1 Then
                             garage.apply_equation = True
-                        Else
-                            If appEq = 2 Then
-                                garage.apply_equation2 = True
-                            Else
-                                If appEq = 3 Then
-                                    garage.apply_equation3 = True
-                                Else
-                                    If appEq = 4 Then
-                                        garage.apply_equation4 = True
-                                    End If
-                                End If
-                            End If
+                       
                         End If
                     End If
 
@@ -2772,46 +2342,26 @@ Module dbSelects
                     End If
 
                     garage.apply_equation = False
-                    garage.apply_equation2 = False
+
                     If Not DR.Item("apply_equation") Is DBNull.Value Then
                         Dim appEqDB As String = DR.Item("apply_equation")
                         Dim appEq As Integer = 0
-                        Dim eqq5 As Boolean = False
-                        Dim eqq6 As Boolean = False
+                       
                         If appEqDB.IndexOf("+") = -1 Then
                             appEq = Integer.Parse(appEqDB)
                         Else
                             Try
                                 appEq = Integer.Parse(appEqDB.Substring(0, appEqDB.IndexOf("+")))
-                                If appEqDB.Substring(appEqDB.IndexOf("+") + 1).Contains("eq6") Then
-                                    Dim temp As String = (appEqDB.Substring(appEqDB.IndexOf("+") + 1))
-                                    eqq5 = Boolean.Parse(temp.Substring(0, temp.IndexOf("eq6")))
-                                    eqq6 = Boolean.Parse(temp.Substring(temp.IndexOf("eq6") + 3))
-                                Else
-                                    eqq5 = Boolean.Parse(appEqDB.Substring(appEqDB.IndexOf("+") + 1))
-                                End If
+                                
                             Catch ex As Exception
                                 MsgBox("Verify garage data (Appy eq field)", MsgBoxStyle.Exclamation)
                                 Throw ex
                             End Try
                         End If
 
-                        garage.apply_equation5 = eqq5
-                        garage.apply_equation6 = eqq6
                         If appEq = 1 Then
                             garage.apply_equation = True
-                        Else
-                            If appEq = 2 Then
-                                garage.apply_equation2 = True
-                            Else
-                                If appEq = 3 Then
-                                    garage.apply_equation3 = True
-                                Else
-                                    If appEq = 4 Then
-                                        garage.apply_equation4 = True
-                                    End If
-                                End If
-                            End If
+                       
                         End If
                     End If
 

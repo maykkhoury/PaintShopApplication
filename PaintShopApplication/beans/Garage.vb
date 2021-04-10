@@ -13,11 +13,7 @@
 
     Private chosenAtt As Boolean
     Private apply_equationAtt As Boolean
-    Private apply_equation2Att As Boolean
-    Private apply_equation3Att As Boolean
-    Private apply_equation4Att As Boolean
-    Private apply_equation5Att As Boolean
-    Private apply_equation6Att As Boolean
+
     Private versionAtt As String
     Private coatAtt As String
     Private showAllAtt As String = False
@@ -85,42 +81,7 @@
             versionAtt = Value
         End Set
     End Property
-    Property apply_equation6() As Boolean
-        Get
-            Return apply_equation6Att
-        End Get
-        Set(ByVal Value As Boolean)
-            apply_equation6Att = Value
-        End Set
-
-    End Property
-
-    Property apply_equation5() As Boolean
-        Get
-            Return apply_equation5Att
-        End Get
-        Set(ByVal Value As Boolean)
-            apply_equation5Att = Value
-        End Set
-
-    End Property
-    Property apply_equation4() As Boolean
-        Get
-            Return apply_equation4Att
-        End Get
-        Set(ByVal Value As Boolean)
-            apply_equation4Att = Value
-        End Set
-    End Property
-
-    Property apply_equation3() As Boolean
-        Get
-            Return apply_equation3Att
-        End Get
-        Set(ByVal Value As Boolean)
-            apply_equation3Att = Value
-        End Set
-    End Property
+   
     Property apply_equation() As Boolean
         Get
             Return apply_equationAtt
@@ -130,14 +91,7 @@
         End Set
     End Property
 
-    Property apply_equation2() As Boolean
-        Get
-            Return apply_equation2Att
-        End Get
-        Set(ByVal Value As Boolean)
-            apply_equation2Att = Value
-        End Set
-    End Property
+  
 
     Property garage_name() As String
         Get
