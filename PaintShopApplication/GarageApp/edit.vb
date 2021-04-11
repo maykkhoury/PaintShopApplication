@@ -632,32 +632,23 @@ Public Class edit
                 currencyUsed = detColor.id_currency
                 priceUsed = detColor.garage_price
             End If
-            'id_unit_onEntry = color.id_unit_on_entry
-            'Dim volume As Double = getUnit(id_unit_onEntry).rateToLitre * 1000
+            
+            Dim curColorPrice As Double
+            If chosenGarage.apply_equation Then
+                If color.masse_volumique_ext > 0 Then
+                    curColorPrice = (quantity * priceUsed) / (color.masse_volumique_ext)
+                Else
+                    curColorPrice = 0
+                End If
 
-
-            'colorUnitPrice = colorUnitPrice * color.masse_volumique
-            'colorUnitPrice = convertToChosenCurrency(colorUnitPrice, getCurrency(currencyUsed).rateToDollar)
-            'colorUnitPrice = colorUnitPrice * ratio
-
-            'apply formula:
-            '(quantity * priceUsed (in Litre)) / masse_volumique * volume
-            Dim curColorPrice As Double '= colorUnitPrice * quantity
-            'If chosenGarage.apply_equation2 Then
-            'If color.masse_volumique_ext > 0 Then
-            'curColorPrice = (quantity * priceUsed) / (color.masse_volumique_ext)
-            'Else
-            'curColorPrice = 0
-            'End If
-
-            'Else
-            If color.masse_volumique > 0 Then
-                curColorPrice = (quantity * priceUsed) / (color.masse_volumique)
             Else
-                curColorPrice = 0
-            End If
+                If color.masse_volumique > 0 Then
+                    curColorPrice = (quantity * priceUsed) / (color.masse_volumique)
+                Else
+                    curColorPrice = 0
+                End If
 
-            'End If
+            End If
 
 
             curColorPrice = convertToChosenCurrency(curColorPrice, getCurrency(currencyUsed).rateToDollar)
