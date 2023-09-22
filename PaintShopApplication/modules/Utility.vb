@@ -367,11 +367,11 @@ Module Utility
         End If
         For k = 0 To formulaTab.Length - 1
             If Not formulaTab(k).isMoved Then
-                If formulaTab(k).name_formula.ToLower.Trim = fname & coucheSubstring Then
+                If formulaTab(k).name_formula.ToLower.Trim.StartsWith(fname & coucheSubstring) Then
                     getCoucheIndex = k
                     Exit For
                 Else
-                    If formulaTab(k).name_formula.ToLower.Trim = fname & " " & coucheSubstring Then
+                    If formulaTab(k).name_formula.ToLower.Trim.StartsWith(fname & " " & coucheSubstring) Then
                         getCoucheIndex = k
                         Exit For
                     End If
