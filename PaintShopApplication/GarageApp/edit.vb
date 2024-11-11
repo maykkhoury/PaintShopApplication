@@ -432,14 +432,14 @@ Public Class edit
                     If i <> index Then
                         Dim oldVali As Double = txtQty.Text
                         Dim newVali As Double = oldVali + (oldVali * percentage / 100)
-                        txtQty.Text = Math.Round(newVali, 1)
+                        txtQty.Text = Math.Round(newVali, 1).ToString.Replace(",", ".")
                         Dim diff As Double = newVali - oldVali
                         Dim plus As String = "+"
                         If diff < 0 Then
                             plus = "-"
-                            lbPlus.Text = plus & (-1) * Math.Round(diff, 1)
+                            lbPlus.Text = plus & (-1) * Math.Round(diff, 1).ToString.Replace(",", ".")
                         Else
-                            lbPlus.Text = plus & Math.Round(diff, 1)
+                            lbPlus.Text = plus & Math.Round(diff, 1).ToString.Replace(",", ".")
                         End If
 
                         If i > index Then
@@ -709,10 +709,10 @@ Public Class edit
             txtQuantityDetail.Height = txtQuantityDetailHidden.Height
             If cumulative Then
                 printStringByLine("cumulative of " & color.id_color & " : " & Math.Round(totalQty, 1))
-                txtQuantityDetail.Text = Math.Round(totalQty, 1)
+                txtQuantityDetail.Text = Math.Round(totalQty, 1).ToString.Replace(",", ".")
             Else
                 printStringByLine("not cumulative of " & color.id_color & " : " & Math.Round(quantity, 1))
-                txtQuantityDetail.Text = Math.Round(quantity, 1)
+                txtQuantityDetail.Text = Math.Round(quantity, 1).ToString.Replace(",", ".")
             End If
             If fromDeleteLocal Then
                 txtQuantityDetail.Text = txtQuantityDetail.Text & "delete"
@@ -1111,7 +1111,7 @@ Public Class edit
         AddHandler butValidate.Click, AddressOf saveTransaction
         panButtons.Controls.Add(butValidate)
         'totalPrice = totalPrice / 1000
-        txtTotalPrice.Text = Math.Round(totalPrice, 1)
+        txtTotalPrice.Text = Math.Round(totalPrice, 1).ToString.Replace(",", ".")
 
         txtTotalQty.Text = 1 'Math.Round(totalQty, 1)
 
@@ -1269,7 +1269,7 @@ Public Class edit
                 Exit Sub
             End If
 
-            Dim originalformulaPrice As Double = txtTotalPrice.Text
+            Dim originalformulaPrice As Double = Double.Parse(txtTotalPrice.Text.Replace(",", "."), ciClone)
             'Dim diff As Double = originalformulaPrice - formulaPrice
             'Dim discount As Double = (diff * 100) / originalformulaPrice
 
@@ -1297,7 +1297,7 @@ Public Class edit
         ReDim quantitiesWithAllDecimals(selectedFormulaColors.Length)
         For i = 0 To selectedFormulaColors.Length - 1
             Dim txtQuantityDetail As TextBox = CType(Controls.Find("txtQuantityDetail" & (i), True)(0), TextBox)
-            quantitiesWithAllDecimals(i) = txtQuantityDetail.Text
+            quantitiesWithAllDecimals(i) = Double.Parse(txtQuantityDetail.Text.Replace(",", "."), ciClone)
         Next
 
     End Sub
@@ -1306,7 +1306,7 @@ Public Class edit
         ReDim quantitiesWithAllDecimalsCum(selectedFormulaColors.Length)
         For i = 0 To selectedFormulaColors.Length - 1
             Dim txtQuantityDetail As TextBox = CType(Controls.Find("txtQuantityDetail" & (i), True)(0), TextBox)
-            quantitiesWithAllDecimalsCum(i) = txtQuantityDetail.Text
+            quantitiesWithAllDecimalsCum(i) = Double.Parse(txtQuantityDetail.Text.Replace(",", "."), ciClone)
         Next
 
     End Sub
@@ -1364,7 +1364,7 @@ Public Class edit
                 End If
 
                 Dim initNbr As Double = Math.Round(quantity * chosenQty / prevQty, 1)
-                txtQuantityDetail.Text = initNbr
+                txtQuantityDetail.Text = initNbr.ToString.Replace(",", ".")
                 'Dim testNbr As Double = Math.Ceiling(initNbr)
                 'Dim testStr As String = testNbr
                 'If testStr.Substring(testStr.Length - 1) = "1" Then
@@ -1379,7 +1379,7 @@ Public Class edit
                     quantitiesWithAllDecimalsCum(i) = quantity * chosenQty / prevQty
                 End If
 
-                txtQuantityDetail.Text = Math.Round(quantity * chosenQty / prevQty, 1)
+                txtQuantityDetail.Text = Math.Round(quantity * chosenQty / prevQty, 1).ToString.Replace(",", ".")
             End If
 
 
@@ -1387,7 +1387,10 @@ Public Class edit
 
         Next
 
-        txtTotalPrice.Text = Math.Round(txtTotalPrice.Text * txtTotalQty.Text / prevQty, 1)
+        Dim totalPriceDouble As Double = Double.Parse(txtTotalPrice.Text.Replace(",", "."), ciClone)
+        Dim totalQtyDouble As Double = Double.Parse(txtTotalQty.Text.Replace(",", "."), ciClone)
+
+        txtTotalPrice.Text = Math.Round(totalPriceDouble * totalQtyDouble / prevQty, 1).ToString.Replace(",", ".")
         prevQty = txtTotalQty.Text
         'rdNormal.Checked = True
         If defaultTotal <> 0 Then
@@ -1527,7 +1530,7 @@ Public Class edit
 
 
 
-            txtQuantityDetail.Text = Math.Round(quantity, 1)
+            txtQuantityDetail.Text = Math.Round(quantity, 1).ToString.Replace(",", ".")
 
 
             If Controls.Find("lbPlus" & (i), True).Length > 0 Then
@@ -1551,7 +1554,7 @@ Public Class edit
                 Dim quantity As Double = selectedFormulaColors(i).quantite
                 'quantity = convertToChosenUnit(quantity, getUnit(selectedFormulaColors(i).id_Unit).rateToLitre)
                 quantity = quantity * ratio
-                txtQuantityDetail.Text = Math.Round(quantity, 1)
+                txtQuantityDetail.Text = Math.Round(quantity, 1).ToString.Replace(",", ".")
             Next
             If butKilo.Enabled = False Then
                 convertToKilo()
@@ -1595,7 +1598,7 @@ Public Class edit
                     End If
                 End If
                 ' Dim quantity As Double = selectedFormulaColors(i).quantite
-                Dim quantity As Double = txtQuantityDetail.Text
+                Dim quantity As Double = Double.Parse(txtQuantityDetail.Text, ciClone)
                 'quantity = convertToChosenUnit(quantity, getUnit(selectedFormulaColors(i).id_Unit).rateToLitre)
                 'quantity = quantity * txtTotalQty.Text
                 totalQty = totalQty + quantity
@@ -1609,9 +1612,9 @@ Public Class edit
                         testNbr = Math.Floor(initNbr)
                     End If
 
-                    txtQuantityDetail.Text = testNbr
+                    txtQuantityDetail.Text = testNbr.ToString.Replace(",", ".")
                 Else
-                    txtQuantityDetail.Text = Math.Round(totalQty, 1)
+                    txtQuantityDetail.Text = Math.Round(totalQty, 1).ToString.Replace(",", ".")
                 End If
 
 
@@ -1891,7 +1894,7 @@ Public Class edit
 
         For i = 0 To selectedFormulaColors.Length - 1
             Dim colorName As String = getColorById(selectedFormulaColors(i).id_color).name_color
-            Dim quantity As String = Math.Round(selectedFormulaColors(i).quantite, 1) ' & " " & getUnit(selectedFormulaColors(i).id_Unit).code_unit
+            Dim quantity As String = Math.Round(selectedFormulaColors(i).quantite, 1).ToString.Replace(",", ".") ' & " " & getUnit(selectedFormulaColors(i).id_Unit).code_unit
 
             e.Graphics.DrawString(colorName, fnt, Brushes.Black, 50, 130 + i * 20)
             e.Graphics.DrawString(quantity, fnt, Brushes.Black, 220, 130 + i * 20)
@@ -2129,16 +2132,19 @@ Public Class edit
                 For i = 0 To selectedFormulaColors.Length - 1
                     Dim txtQuantityDetail As TextBox = CType(Controls.Find("txtQuantityDetail" & (i), True)(0), TextBox)
                     'selectedFormulaColors(i).quantite = selectedFormulaColors(i).quantite / kiloLitreRate '* txtTotalQty.Text / prevQty
-                    txtQuantityDetail.Text = Math.Round(txtQuantityDetail.Text / kiloLitreRate, 1)
+
+                    Dim totalQty As Double = Double.Parse(txtQuantityDetail.Text.Replace(",", "."), ciClone)
+                    txtQuantityDetail.Text = Math.Round(totalQty / kiloLitreRate, 1).ToString.Replace(",", ".")
                 Next
-                txtTotalPrice.Text = Math.Round(txtTotalPrice.Text / kiloLitreRate, 1)
+                Dim totalPrice As Double = Double.Parse(txtTotalPrice.Text.Replace(",", "."), ciClone)
+                txtTotalPrice.Text = Math.Round(totalPrice / kiloLitreRate, 1).ToString.Replace(",", ".")
             End If
         End If
 
         Dim str As String = txtTotalQty.Text
         setTextBoxWidth()
         'generatesDetail()
-        txtTotalQty.Text = str
+        txtTotalQty.Text = str.ToString.Replace(",", ".")
 
     End Sub
     Private Sub convertToKilo()
@@ -2150,11 +2156,12 @@ Public Class edit
 
             kiloLitreRate = 1000 / total
 
-            txtTotalPrice.Text = Math.Round(txtTotalPrice.Text * kiloLitreRate, 1)
+            Dim totalPrice As Double = Double.Parse(txtTotalPrice.Text, ciClone)
+            txtTotalPrice.Text = Math.Round(totalPrice * kiloLitreRate, 1).ToString.Replace(",", ".")
             For i = 0 To selectedFormulaColors.Length - 1
                 Dim txtQuantityDetail As TextBox = CType(Controls.Find("txtQuantityDetail" & (i), True)(0), TextBox)
-
-                txtQuantityDetail.Text = Math.Round(txtQuantityDetail.Text * kiloLitreRate, 1)
+                Dim totalQty As Double = Double.Parse(txtQuantityDetail.Text.Replace(",", "."), ciClone)
+                txtQuantityDetail.Text = Math.Round(totalQty * kiloLitreRate, 1).ToString.Replace(",", ".")
 
             Next
         Else
@@ -2163,7 +2170,7 @@ Public Class edit
         Dim str As String = txtTotalQty.Text
         setTextBoxWidth()
         'generatesDetail()
-        txtTotalQty.Text = str
+        txtTotalQty.Text = str.ToString.Replace(",", ".")
 
     End Sub
 

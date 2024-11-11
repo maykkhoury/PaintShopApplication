@@ -618,7 +618,7 @@ Module dbSelects
                             Dim decryptedQty As String = decryptQuantity(dbQuantity, newFormulaColor.id_formulaColor)
                             newFormulaColor.quantite = Double.Parse(decryptedQty, ciClone)
 
-                            If decryptedQty <= 0 Then
+                            If newFormulaColor.quantite <= 0 Then
                                 MsgBox("Please contact your administrator for the latest formula details", MsgBoxStyle.Information)
                                 Exit Function
                             End If

@@ -22,12 +22,20 @@ Partial Class garageHome
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(garageHome))
         Me.openfile = New System.Windows.Forms.OpenFileDialog()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.menFile = New garageApp.MyMenuStrip()
+        Me.GetLatestDataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ColorLocatorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ImportPricesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menUpdate = New garageApp.MyMenuStrip()
+        Me.BackupCustomersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RestoreBackupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menEditColor = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menExit = New garageApp.MyMenuStrip()
+        Me.menSettings = New garageApp.MyMenuStrip()
         Me.dlgPrintPreview = New System.Windows.Forms.PrintPreviewDialog()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.dlgColor = New System.Windows.Forms.ColorDialog()
-        Me.FBrowserGarage = New System.Windows.Forms.FolderBrowserDialog()
-        Me.fileDialog = New System.Windows.Forms.OpenFileDialog()
         Me.grpFormulas = New garageApp.MyGroupBox()
+        Me.lbDownloading = New System.Windows.Forms.Label()
         Me.prgUpdate = New System.Windows.Forms.ProgressBar()
         Me.cmbCarNameSearch = New System.Windows.Forms.ComboBox()
         Me.txtColorCode = New garageApp.MyTextBox()
@@ -72,17 +80,9 @@ Partial Class garageHome
         Me.txtFormulaName = New garageApp.MyTextBox()
         Me.lbFormulaName = New garageApp.TranslatedLabel()
         Me.butGo = New garageApp.MyButton()
-        Me.menFile = New garageApp.MyMenuStrip()
-        Me.GetLatestDataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ColorLocatorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ImportPricesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menUpdate = New garageApp.MyMenuStrip()
-        Me.BackupCustomersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RestoreBackupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menEditColor = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menExit = New garageApp.MyMenuStrip()
-        Me.menSettings = New garageApp.MyMenuStrip()
-        Me.lbDownloading = New System.Windows.Forms.Label()
+        Me.dlgColor = New System.Windows.Forms.ColorDialog()
+        Me.FBrowserGarage = New System.Windows.Forms.FolderBrowserDialog()
+        Me.fileDialog = New System.Windows.Forms.OpenFileDialog()
         Me.MenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.grpFormulas.SuspendLayout()
@@ -96,12 +96,74 @@ Partial Class garageHome
         'MenuStrip1
         '
         Me.MenuStrip1.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menFile, Me.menSettings})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(784, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1045, 30)
         Me.MenuStrip1.TabIndex = 4
         Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'menFile
+        '
+        Me.menFile.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GetLatestDataToolStripMenuItem, Me.ColorLocatorToolStripMenuItem, Me.ImportPricesToolStripMenuItem, Me.menUpdate, Me.BackupCustomersToolStripMenuItem, Me.RestoreBackupToolStripMenuItem, Me.menEditColor, Me.menExit})
+        Me.menFile.Name = "menFile"
+        Me.menFile.Size = New System.Drawing.Size(50, 26)
+        Me.menFile.Text = "&File"
+        '
+        'GetLatestDataToolStripMenuItem
+        '
+        Me.GetLatestDataToolStripMenuItem.Name = "GetLatestDataToolStripMenuItem"
+        Me.GetLatestDataToolStripMenuItem.Size = New System.Drawing.Size(225, 26)
+        Me.GetLatestDataToolStripMenuItem.Text = "Get &Latest Data"
+        '
+        'ColorLocatorToolStripMenuItem
+        '
+        Me.ColorLocatorToolStripMenuItem.Name = "ColorLocatorToolStripMenuItem"
+        Me.ColorLocatorToolStripMenuItem.Size = New System.Drawing.Size(225, 26)
+        Me.ColorLocatorToolStripMenuItem.Text = "&Color locator"
+        '
+        'ImportPricesToolStripMenuItem
+        '
+        Me.ImportPricesToolStripMenuItem.Name = "ImportPricesToolStripMenuItem"
+        Me.ImportPricesToolStripMenuItem.Size = New System.Drawing.Size(225, 26)
+        Me.ImportPricesToolStripMenuItem.Text = "&Import prices"
+        '
+        'menUpdate
+        '
+        Me.menUpdate.Name = "menUpdate"
+        Me.menUpdate.Size = New System.Drawing.Size(225, 26)
+        Me.menUpdate.Text = "&Update"
+        '
+        'BackupCustomersToolStripMenuItem
+        '
+        Me.BackupCustomersToolStripMenuItem.Name = "BackupCustomersToolStripMenuItem"
+        Me.BackupCustomersToolStripMenuItem.Size = New System.Drawing.Size(225, 26)
+        Me.BackupCustomersToolStripMenuItem.Text = "&Backup customers"
+        '
+        'RestoreBackupToolStripMenuItem
+        '
+        Me.RestoreBackupToolStripMenuItem.Name = "RestoreBackupToolStripMenuItem"
+        Me.RestoreBackupToolStripMenuItem.Size = New System.Drawing.Size(225, 26)
+        Me.RestoreBackupToolStripMenuItem.Text = "&Restore backup"
+        '
+        'menEditColor
+        '
+        Me.menEditColor.Name = "menEditColor"
+        Me.menEditColor.Size = New System.Drawing.Size(225, 26)
+        Me.menEditColor.Text = "E&dit Price"
+        '
+        'menExit
+        '
+        Me.menExit.Name = "menExit"
+        Me.menExit.Size = New System.Drawing.Size(225, 26)
+        Me.menExit.Text = "&Exit"
+        '
+        'menSettings
+        '
+        Me.menSettings.Name = "menSettings"
+        Me.menSettings.Size = New System.Drawing.Size(84, 26)
+        Me.menSettings.Text = "&Settings"
         '
         'dlgPrintPreview
         '
@@ -117,14 +179,11 @@ Partial Class garageHome
         '
         Me.Panel1.Controls.Add(Me.grpFormulas)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(0, 24)
+        Me.Panel1.Location = New System.Drawing.Point(0, 30)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(784, 538)
+        Me.Panel1.Size = New System.Drawing.Size(1045, 662)
         Me.Panel1.TabIndex = 63
-        '
-        'fileDialog
-        '
-        Me.fileDialog.FileName = "OpenFileDialog1"
         '
         'grpFormulas
         '
@@ -167,19 +226,34 @@ Partial Class garageHome
         Me.grpFormulas.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grpFormulas.ForeColor = System.Drawing.SystemColors.ActiveCaption
         Me.grpFormulas.Location = New System.Drawing.Point(0, 0)
+        Me.grpFormulas.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.grpFormulas.Name = "grpFormulas"
-        Me.grpFormulas.Size = New System.Drawing.Size(784, 538)
+        Me.grpFormulas.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grpFormulas.Size = New System.Drawing.Size(1045, 662)
         Me.grpFormulas.TabIndex = 54
         Me.grpFormulas.TabStop = False
         Me.grpFormulas.Text = "Formulas"
+        '
+        'lbDownloading
+        '
+        Me.lbDownloading.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lbDownloading.AutoSize = True
+        Me.lbDownloading.Location = New System.Drawing.Point(643, 246)
+        Me.lbDownloading.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbDownloading.Name = "lbDownloading"
+        Me.lbDownloading.Size = New System.Drawing.Size(324, 20)
+        Me.lbDownloading.TabIndex = 174
+        Me.lbDownloading.Text = "Downloading new data, please wait ..."
+        Me.lbDownloading.Visible = False
         '
         'prgUpdate
         '
         Me.prgUpdate.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.prgUpdate.Location = New System.Drawing.Point(12, 511)
+        Me.prgUpdate.Location = New System.Drawing.Point(16, 629)
+        Me.prgUpdate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.prgUpdate.Name = "prgUpdate"
-        Me.prgUpdate.Size = New System.Drawing.Size(650, 23)
+        Me.prgUpdate.Size = New System.Drawing.Size(867, 28)
         Me.prgUpdate.TabIndex = 173
         '
         'cmbCarNameSearch
@@ -189,18 +263,19 @@ Partial Class garageHome
         Me.cmbCarNameSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 17.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbCarNameSearch.FormattingEnabled = True
         Me.cmbCarNameSearch.IntegralHeight = False
-        Me.cmbCarNameSearch.Location = New System.Drawing.Point(126, 24)
-        Me.cmbCarNameSearch.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbCarNameSearch.Location = New System.Drawing.Point(168, 30)
+        Me.cmbCarNameSearch.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.cmbCarNameSearch.Name = "cmbCarNameSearch"
-        Me.cmbCarNameSearch.Size = New System.Drawing.Size(265, 37)
+        Me.cmbCarNameSearch.Size = New System.Drawing.Size(352, 40)
         Me.cmbCarNameSearch.TabIndex = 168
         '
         'txtColorCode
         '
         Me.txtColorCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 17.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtColorCode.Location = New System.Drawing.Point(126, 69)
+        Me.txtColorCode.Location = New System.Drawing.Point(168, 85)
+        Me.txtColorCode.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtColorCode.Name = "txtColorCode"
-        Me.txtColorCode.Size = New System.Drawing.Size(147, 33)
+        Me.txtColorCode.Size = New System.Drawing.Size(195, 40)
         Me.txtColorCode.TabIndex = 167
         '
         'chkColorCode
@@ -208,9 +283,10 @@ Partial Class garageHome
         Me.chkColorCode.AutoSize = True
         Me.chkColorCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkColorCode.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.chkColorCode.Location = New System.Drawing.Point(279, 73)
+        Me.chkColorCode.Location = New System.Drawing.Point(372, 90)
+        Me.chkColorCode.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.chkColorCode.Name = "chkColorCode"
-        Me.chkColorCode.Size = New System.Drawing.Size(75, 17)
+        Me.chkColorCode.Size = New System.Drawing.Size(93, 21)
         Me.chkColorCode.TabIndex = 169
         Me.chkColorCode.Tag = ""
         Me.chkColorCode.Text = "Contains"
@@ -221,9 +297,10 @@ Partial Class garageHome
         Me.lbColorCode.AutoSize = True
         Me.lbColorCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbColorCode.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lbColorCode.Location = New System.Drawing.Point(19, 84)
+        Me.lbColorCode.Location = New System.Drawing.Point(25, 103)
+        Me.lbColorCode.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbColorCode.Name = "lbColorCode"
-        Me.lbColorCode.Size = New System.Drawing.Size(93, 17)
+        Me.lbColorCode.Size = New System.Drawing.Size(109, 20)
         Me.lbColorCode.TabIndex = 170
         Me.lbColorCode.Text = "Color Code:"
         '
@@ -231,9 +308,10 @@ Partial Class garageHome
         '
         Me.lbCarIdSearch.AutoSize = True
         Me.lbCarIdSearch.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lbCarIdSearch.Location = New System.Drawing.Point(90, 30)
+        Me.lbCarIdSearch.Location = New System.Drawing.Point(120, 37)
+        Me.lbCarIdSearch.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbCarIdSearch.Name = "lbCarIdSearch"
-        Me.lbCarIdSearch.Size = New System.Drawing.Size(23, 17)
+        Me.lbCarIdSearch.Size = New System.Drawing.Size(26, 20)
         Me.lbCarIdSearch.TabIndex = 171
         Me.lbCarIdSearch.Text = "-1"
         Me.lbCarIdSearch.Visible = False
@@ -243,9 +321,10 @@ Partial Class garageHome
         Me.lbCarSearch.AutoSize = True
         Me.lbCarSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbCarSearch.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lbCarSearch.Location = New System.Drawing.Point(19, 27)
+        Me.lbCarSearch.Location = New System.Drawing.Point(25, 33)
+        Me.lbCarSearch.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbCarSearch.Name = "lbCarSearch"
-        Me.lbCarSearch.Size = New System.Drawing.Size(38, 17)
+        Me.lbCarSearch.Size = New System.Drawing.Size(45, 20)
         Me.lbCarSearch.TabIndex = 172
         Me.lbCarSearch.Text = "Car:"
         '
@@ -254,9 +333,10 @@ Partial Class garageHome
         Me.butClearUpdate.BackColor = System.Drawing.SystemColors.Control
         Me.butClearUpdate.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.butClearUpdate.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.butClearUpdate.Location = New System.Drawing.Point(398, 102)
+        Me.butClearUpdate.Location = New System.Drawing.Point(531, 126)
+        Me.butClearUpdate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.butClearUpdate.Name = "butClearUpdate"
-        Me.butClearUpdate.Size = New System.Drawing.Size(99, 38)
+        Me.butClearUpdate.Size = New System.Drawing.Size(132, 47)
         Me.butClearUpdate.TabIndex = 166
         Me.butClearUpdate.Text = "Clear"
         Me.butClearUpdate.UseVisualStyleBackColor = False
@@ -268,18 +348,20 @@ Partial Class garageHome
         Me.chkCardNumber.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkCardNumber.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkCardNumber.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.chkCardNumber.Location = New System.Drawing.Point(279, 140)
+        Me.chkCardNumber.Location = New System.Drawing.Point(372, 172)
+        Me.chkCardNumber.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.chkCardNumber.Name = "chkCardNumber"
-        Me.chkCardNumber.Size = New System.Drawing.Size(75, 17)
+        Me.chkCardNumber.Size = New System.Drawing.Size(93, 21)
         Me.chkCardNumber.TabIndex = 165
         Me.chkCardNumber.Text = "Contains"
         Me.chkCardNumber.UseVisualStyleBackColor = True
         '
         'txtCardNumber
         '
-        Me.txtCardNumber.Location = New System.Drawing.Point(126, 137)
+        Me.txtCardNumber.Location = New System.Drawing.Point(168, 169)
+        Me.txtCardNumber.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtCardNumber.Name = "txtCardNumber"
-        Me.txtCardNumber.Size = New System.Drawing.Size(147, 23)
+        Me.txtCardNumber.Size = New System.Drawing.Size(195, 26)
         Me.txtCardNumber.TabIndex = 163
         '
         'lbCardNumber
@@ -287,26 +369,29 @@ Partial Class garageHome
         Me.lbCardNumber.AutoSize = True
         Me.lbCardNumber.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbCardNumber.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lbCardNumber.Location = New System.Drawing.Point(16, 137)
+        Me.lbCardNumber.Location = New System.Drawing.Point(21, 169)
+        Me.lbCardNumber.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbCardNumber.Name = "lbCardNumber"
-        Me.lbCardNumber.Size = New System.Drawing.Size(94, 15)
+        Me.lbCardNumber.Size = New System.Drawing.Size(110, 18)
         Me.lbCardNumber.TabIndex = 164
         Me.lbCardNumber.Text = "Card number:"
         '
         'txtYearSpec
         '
-        Me.txtYearSpec.Location = New System.Drawing.Point(126, 164)
+        Me.txtYearSpec.Location = New System.Drawing.Point(168, 202)
+        Me.txtYearSpec.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtYearSpec.Name = "txtYearSpec"
-        Me.txtYearSpec.Size = New System.Drawing.Size(147, 23)
+        Me.txtYearSpec.Size = New System.Drawing.Size(195, 26)
         Me.txtYearSpec.TabIndex = 160
         '
         'Label15
         '
         Me.Label15.AutoSize = True
         Me.Label15.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label15.Location = New System.Drawing.Point(482, 149)
+        Me.Label15.Location = New System.Drawing.Point(643, 183)
+        Me.Label15.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(70, 17)
+        Me.Label15.Size = New System.Drawing.Size(83, 20)
         Me.Label15.TabIndex = 159
         Me.Label15.Text = "Specific:"
         Me.Label15.Visible = False
@@ -314,10 +399,10 @@ Partial Class garageHome
         'cmbClientName
         '
         Me.cmbClientName.FormattingEnabled = True
-        Me.cmbClientName.Location = New System.Drawing.Point(126, 191)
-        Me.cmbClientName.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbClientName.Location = New System.Drawing.Point(168, 235)
+        Me.cmbClientName.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.cmbClientName.Name = "cmbClientName"
-        Me.cmbClientName.Size = New System.Drawing.Size(147, 24)
+        Me.cmbClientName.Size = New System.Drawing.Size(195, 28)
         Me.cmbClientName.TabIndex = 158
         '
         'chkUseOldDb
@@ -326,9 +411,10 @@ Partial Class garageHome
         Me.chkUseOldDb.AutoSize = True
         Me.chkUseOldDb.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkUseOldDb.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.chkUseOldDb.Location = New System.Drawing.Point(635, 90)
+        Me.chkUseOldDb.Location = New System.Drawing.Point(857, 111)
+        Me.chkUseOldDb.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.chkUseOldDb.Name = "chkUseOldDb"
-        Me.chkUseOldDb.Size = New System.Drawing.Size(137, 17)
+        Me.chkUseOldDb.Size = New System.Drawing.Size(173, 21)
         Me.chkUseOldDb.TabIndex = 157
         Me.chkUseOldDb.Tag = ""
         Me.chkUseOldDb.Text = "Use Original DB123"
@@ -341,9 +427,10 @@ Partial Class garageHome
         Me.butExit.BackColor = System.Drawing.SystemColors.Control
         Me.butExit.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.butExit.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.butExit.Location = New System.Drawing.Point(673, 511)
+        Me.butExit.Location = New System.Drawing.Point(897, 629)
+        Me.butExit.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.butExit.Name = "butExit"
-        Me.butExit.Size = New System.Drawing.Size(99, 23)
+        Me.butExit.Size = New System.Drawing.Size(132, 28)
         Me.butExit.TabIndex = 156
         Me.butExit.Text = "Exit"
         Me.butExit.UseVisualStyleBackColor = False
@@ -353,9 +440,10 @@ Partial Class garageHome
         Me.lbClient.AutoSize = True
         Me.lbClient.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbClient.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lbClient.Location = New System.Drawing.Point(16, 193)
+        Me.lbClient.Location = New System.Drawing.Point(21, 238)
+        Me.lbClient.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbClient.Name = "lbClient"
-        Me.lbClient.Size = New System.Drawing.Size(88, 15)
+        Me.lbClient.Size = New System.Drawing.Size(102, 18)
         Me.lbClient.TabIndex = 153
         Me.lbClient.Text = "Client name:"
         '
@@ -363,9 +451,10 @@ Partial Class garageHome
         '
         Me.Label1.AutoSize = True
         Me.Label1.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label1.Location = New System.Drawing.Point(407, 152)
+        Me.Label1.Location = New System.Drawing.Point(543, 187)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(14, 17)
+        Me.Label1.Size = New System.Drawing.Size(16, 20)
         Me.Label1.TabIndex = 152
         Me.Label1.Text = "-"
         Me.Label1.Visible = False
@@ -376,9 +465,10 @@ Partial Class garageHome
         Me.lbCurrencyDetailsValue.AutoSize = True
         Me.lbCurrencyDetailsValue.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbCurrencyDetailsValue.ForeColor = System.Drawing.SystemColors.ActiveCaption
-        Me.lbCurrencyDetailsValue.Location = New System.Drawing.Point(680, 48)
+        Me.lbCurrencyDetailsValue.Location = New System.Drawing.Point(907, 59)
+        Me.lbCurrencyDetailsValue.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbCurrencyDetailsValue.Name = "lbCurrencyDetailsValue"
-        Me.lbCurrencyDetailsValue.Size = New System.Drawing.Size(21, 15)
+        Me.lbCurrencyDetailsValue.Size = New System.Drawing.Size(25, 18)
         Me.lbCurrencyDetailsValue.TabIndex = 151
         Me.lbCurrencyDetailsValue.Text = "- -"
         '
@@ -388,9 +478,10 @@ Partial Class garageHome
         Me.lbCurrencyDetails.AutoSize = True
         Me.lbCurrencyDetails.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbCurrencyDetails.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lbCurrencyDetails.Location = New System.Drawing.Point(607, 48)
+        Me.lbCurrencyDetails.Location = New System.Drawing.Point(809, 59)
+        Me.lbCurrencyDetails.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbCurrencyDetails.Name = "lbCurrencyDetails"
-        Me.lbCurrencyDetails.Size = New System.Drawing.Size(67, 15)
+        Me.lbCurrencyDetails.Size = New System.Drawing.Size(81, 18)
         Me.lbCurrencyDetails.TabIndex = 150
         Me.lbCurrencyDetails.Text = "Currency:"
         '
@@ -400,9 +491,10 @@ Partial Class garageHome
         Me.lbUnitMesureValue.AutoSize = True
         Me.lbUnitMesureValue.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbUnitMesureValue.ForeColor = System.Drawing.SystemColors.ActiveCaption
-        Me.lbUnitMesureValue.Location = New System.Drawing.Point(680, 19)
+        Me.lbUnitMesureValue.Location = New System.Drawing.Point(907, 23)
+        Me.lbUnitMesureValue.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbUnitMesureValue.Name = "lbUnitMesureValue"
-        Me.lbUnitMesureValue.Size = New System.Drawing.Size(21, 15)
+        Me.lbUnitMesureValue.Size = New System.Drawing.Size(25, 18)
         Me.lbUnitMesureValue.TabIndex = 149
         Me.lbUnitMesureValue.Text = "- -"
         '
@@ -412,25 +504,28 @@ Partial Class garageHome
         Me.lbUnitMesure.AutoSize = True
         Me.lbUnitMesure.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbUnitMesure.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lbUnitMesure.Location = New System.Drawing.Point(607, 19)
+        Me.lbUnitMesure.Location = New System.Drawing.Point(809, 23)
+        Me.lbUnitMesure.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbUnitMesure.Name = "lbUnitMesure"
-        Me.lbUnitMesure.Size = New System.Drawing.Size(37, 15)
+        Me.lbUnitMesure.Size = New System.Drawing.Size(43, 18)
         Me.lbUnitMesure.TabIndex = 148
         Me.lbUnitMesure.Text = "Unit:"
         '
         'txtYearMax
         '
-        Me.txtYearMax.Location = New System.Drawing.Point(427, 146)
+        Me.txtYearMax.Location = New System.Drawing.Point(569, 180)
+        Me.txtYearMax.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtYearMax.Name = "txtYearMax"
-        Me.txtYearMax.Size = New System.Drawing.Size(49, 23)
+        Me.txtYearMax.Size = New System.Drawing.Size(64, 26)
         Me.txtYearMax.TabIndex = 4
         Me.txtYearMax.Visible = False
         '
         'txtYearMin
         '
-        Me.txtYearMin.Location = New System.Drawing.Point(353, 146)
+        Me.txtYearMin.Location = New System.Drawing.Point(471, 180)
+        Me.txtYearMin.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtYearMin.Name = "txtYearMin"
-        Me.txtYearMin.Size = New System.Drawing.Size(48, 23)
+        Me.txtYearMin.Size = New System.Drawing.Size(63, 26)
         Me.txtYearMin.TabIndex = 3
         Me.txtYearMin.Visible = False
         '
@@ -439,9 +534,10 @@ Partial Class garageHome
         Me.lbYear.AutoSize = True
         Me.lbYear.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbYear.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lbYear.Location = New System.Drawing.Point(16, 163)
+        Me.lbYear.Location = New System.Drawing.Point(21, 201)
+        Me.lbYear.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbYear.Name = "lbYear"
-        Me.lbYear.Size = New System.Drawing.Size(40, 15)
+        Me.lbYear.Size = New System.Drawing.Size(47, 18)
         Me.lbYear.TabIndex = 144
         Me.lbYear.Text = "Year:"
         '
@@ -456,9 +552,10 @@ Partial Class garageHome
         Me.lsvFamily.FullRowSelect = True
         Me.lsvFamily.GridLines = True
         Me.lsvFamily.HideSelection = False
-        Me.lsvFamily.Location = New System.Drawing.Point(12, 220)
+        Me.lsvFamily.Location = New System.Drawing.Point(16, 271)
+        Me.lsvFamily.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.lsvFamily.Name = "lsvFamily"
-        Me.lsvFamily.Size = New System.Drawing.Size(760, 286)
+        Me.lsvFamily.Size = New System.Drawing.Size(1012, 351)
         Me.lsvFamily.TabIndex = 143
         Me.lsvFamily.UseCompatibleStateImageBehavior = False
         Me.lsvFamily.View = System.Windows.Forms.View.Details
@@ -527,9 +624,11 @@ Partial Class garageHome
         Me.GroupBox1.Controls.Add(Me.rdAny)
         Me.GroupBox1.Controls.Add(Me.rdBC)
         Me.GroupBox1.Controls.Add(Me.rd2k_LS)
-        Me.GroupBox1.Location = New System.Drawing.Point(613, 107)
+        Me.GroupBox1.Location = New System.Drawing.Point(817, 132)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(159, 35)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Size = New System.Drawing.Size(212, 43)
         Me.GroupBox1.TabIndex = 82
         Me.GroupBox1.TabStop = False
         '
@@ -538,9 +637,10 @@ Partial Class garageHome
         Me.rdAny.AutoSize = True
         Me.rdAny.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.rdAny.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.rdAny.Location = New System.Drawing.Point(102, 12)
+        Me.rdAny.Location = New System.Drawing.Point(136, 15)
+        Me.rdAny.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.rdAny.Name = "rdAny"
-        Me.rdAny.Size = New System.Drawing.Size(46, 17)
+        Me.rdAny.Size = New System.Drawing.Size(56, 21)
         Me.rdAny.TabIndex = 80
         Me.rdAny.Text = "Any"
         Me.rdAny.UseVisualStyleBackColor = True
@@ -551,9 +651,10 @@ Partial Class garageHome
         Me.rdBC.Checked = True
         Me.rdBC.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.rdBC.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.rdBC.Location = New System.Drawing.Point(55, 12)
+        Me.rdBC.Location = New System.Drawing.Point(73, 15)
+        Me.rdBC.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.rdBC.Name = "rdBC"
-        Me.rdBC.Size = New System.Drawing.Size(41, 17)
+        Me.rdBC.Size = New System.Drawing.Size(49, 21)
         Me.rdBC.TabIndex = 79
         Me.rdBC.TabStop = True
         Me.rdBC.Text = "BC"
@@ -564,9 +665,10 @@ Partial Class garageHome
         Me.rd2k_LS.AutoSize = True
         Me.rd2k_LS.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.rd2k_LS.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.rd2k_LS.Location = New System.Drawing.Point(9, 12)
+        Me.rd2k_LS.Location = New System.Drawing.Point(12, 15)
+        Me.rd2k_LS.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.rd2k_LS.Name = "rd2k_LS"
-        Me.rd2k_LS.Size = New System.Drawing.Size(40, 17)
+        Me.rd2k_LS.Size = New System.Drawing.Size(48, 21)
         Me.rd2k_LS.TabIndex = 78
         Me.rd2k_LS.Text = "2K"
         Me.rd2k_LS.UseVisualStyleBackColor = True
@@ -578,18 +680,20 @@ Partial Class garageHome
         Me.chkFormulaName.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkFormulaName.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkFormulaName.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.chkFormulaName.Location = New System.Drawing.Point(279, 112)
+        Me.chkFormulaName.Location = New System.Drawing.Point(372, 138)
+        Me.chkFormulaName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.chkFormulaName.Name = "chkFormulaName"
-        Me.chkFormulaName.Size = New System.Drawing.Size(75, 17)
+        Me.chkFormulaName.Size = New System.Drawing.Size(93, 21)
         Me.chkFormulaName.TabIndex = 70
         Me.chkFormulaName.Text = "Contains"
         Me.chkFormulaName.UseVisualStyleBackColor = True
         '
         'txtFormulaName
         '
-        Me.txtFormulaName.Location = New System.Drawing.Point(126, 111)
+        Me.txtFormulaName.Location = New System.Drawing.Point(168, 137)
+        Me.txtFormulaName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtFormulaName.Name = "txtFormulaName"
-        Me.txtFormulaName.Size = New System.Drawing.Size(147, 23)
+        Me.txtFormulaName.Size = New System.Drawing.Size(195, 26)
         Me.txtFormulaName.TabIndex = 2
         '
         'lbFormulaName
@@ -597,9 +701,10 @@ Partial Class garageHome
         Me.lbFormulaName.AutoSize = True
         Me.lbFormulaName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbFormulaName.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lbFormulaName.Location = New System.Drawing.Point(16, 111)
+        Me.lbFormulaName.Location = New System.Drawing.Point(21, 137)
+        Me.lbFormulaName.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbFormulaName.Name = "lbFormulaName"
-        Me.lbFormulaName.Size = New System.Drawing.Size(104, 15)
+        Me.lbFormulaName.Size = New System.Drawing.Size(121, 18)
         Me.lbFormulaName.TabIndex = 68
         Me.lbFormulaName.Text = "Formula name:"
         '
@@ -609,95 +714,29 @@ Partial Class garageHome
         Me.butGo.BackColor = System.Drawing.SystemColors.Control
         Me.butGo.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.butGo.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.butGo.Location = New System.Drawing.Point(398, 22)
+        Me.butGo.Location = New System.Drawing.Point(531, 27)
+        Me.butGo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.butGo.Name = "butGo"
-        Me.butGo.Size = New System.Drawing.Size(99, 78)
+        Me.butGo.Size = New System.Drawing.Size(132, 96)
         Me.butGo.TabIndex = 7
         Me.butGo.Text = "Go"
         Me.butGo.UseVisualStyleBackColor = False
         '
-        'menFile
+        'fileDialog
         '
-        Me.menFile.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GetLatestDataToolStripMenuItem, Me.ColorLocatorToolStripMenuItem, Me.ImportPricesToolStripMenuItem, Me.menUpdate, Me.BackupCustomersToolStripMenuItem, Me.RestoreBackupToolStripMenuItem, Me.menEditColor, Me.menExit})
-        Me.menFile.Name = "menFile"
-        Me.menFile.Size = New System.Drawing.Size(38, 20)
-        Me.menFile.Text = "&File"
-        '
-        'GetLatestDataToolStripMenuItem
-        '
-        Me.GetLatestDataToolStripMenuItem.Name = "GetLatestDataToolStripMenuItem"
-        Me.GetLatestDataToolStripMenuItem.Size = New System.Drawing.Size(185, 22)
-        Me.GetLatestDataToolStripMenuItem.Text = "Get &Latest Data"
-        '
-        'ColorLocatorToolStripMenuItem
-        '
-        Me.ColorLocatorToolStripMenuItem.Name = "ColorLocatorToolStripMenuItem"
-        Me.ColorLocatorToolStripMenuItem.Size = New System.Drawing.Size(185, 22)
-        Me.ColorLocatorToolStripMenuItem.Text = "&Color locator"
-        '
-        'ImportPricesToolStripMenuItem
-        '
-        Me.ImportPricesToolStripMenuItem.Name = "ImportPricesToolStripMenuItem"
-        Me.ImportPricesToolStripMenuItem.Size = New System.Drawing.Size(185, 22)
-        Me.ImportPricesToolStripMenuItem.Text = "&Import prices"
-        '
-        'menUpdate
-        '
-        Me.menUpdate.Name = "menUpdate"
-        Me.menUpdate.Size = New System.Drawing.Size(185, 22)
-        Me.menUpdate.Text = "&Update"
-        '
-        'BackupCustomersToolStripMenuItem
-        '
-        Me.BackupCustomersToolStripMenuItem.Name = "BackupCustomersToolStripMenuItem"
-        Me.BackupCustomersToolStripMenuItem.Size = New System.Drawing.Size(185, 22)
-        Me.BackupCustomersToolStripMenuItem.Text = "&Backup customers"
-        '
-        'RestoreBackupToolStripMenuItem
-        '
-        Me.RestoreBackupToolStripMenuItem.Name = "RestoreBackupToolStripMenuItem"
-        Me.RestoreBackupToolStripMenuItem.Size = New System.Drawing.Size(185, 22)
-        Me.RestoreBackupToolStripMenuItem.Text = "&Restore backup"
-        '
-        'menEditColor
-        '
-        Me.menEditColor.Name = "menEditColor"
-        Me.menEditColor.Size = New System.Drawing.Size(185, 22)
-        Me.menEditColor.Text = "E&dit Price"
-        '
-        'menExit
-        '
-        Me.menExit.Name = "menExit"
-        Me.menExit.Size = New System.Drawing.Size(185, 22)
-        Me.menExit.Text = "&Exit"
-        '
-        'menSettings
-        '
-        Me.menSettings.Name = "menSettings"
-        Me.menSettings.Size = New System.Drawing.Size(71, 20)
-        Me.menSettings.Text = "&Settings"
-        '
-        'lbDownloading
-        '
-        Me.lbDownloading.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lbDownloading.AutoSize = True
-        Me.lbDownloading.Location = New System.Drawing.Point(482, 200)
-        Me.lbDownloading.Name = "lbDownloading"
-        Me.lbDownloading.Size = New System.Drawing.Size(281, 17)
-        Me.lbDownloading.TabIndex = 174
-        Me.lbDownloading.Text = "Downloading new data, please wait ..."
-        Me.lbDownloading.Visible = False
+        Me.fileDialog.FileName = "OpenFileDialog1"
         '
         'garageHome
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(784, 562)
+        Me.ClientSize = New System.Drawing.Size(1045, 692)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MinimumSize = New System.Drawing.Size(798, 558)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MinimumSize = New System.Drawing.Size(1058, 676)
         Me.Name = "garageHome"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "PaintShop (Garage)"

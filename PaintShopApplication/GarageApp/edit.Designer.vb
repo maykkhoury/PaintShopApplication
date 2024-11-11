@@ -63,6 +63,7 @@ Partial Class edit
         Me.pctFormulaColor = New System.Windows.Forms.PictureBox()
         Me.pctCarImg = New System.Windows.Forms.PictureBox()
         Me.txtFormulaCode = New garageApp.MyTextBox()
+        Me.lbAsteriks = New System.Windows.Forms.Label()
         Me.txtModDate = New garageApp.MyTextBox()
         Me.cmbClientName = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -100,7 +101,6 @@ Partial Class edit
         Me.dlgColor = New System.Windows.Forms.ColorDialog()
         Me.ToolTipVariant = New System.Windows.Forms.ToolTip(Me.components)
         Me.dlgPrintDialog = New System.Windows.Forms.PrintDialog()
-        Me.lbAsteriks = New System.Windows.Forms.Label()
         Me.Panel4.SuspendLayout()
         Me.grpDetail.SuspendLayout()
         Me.panColors.SuspendLayout()
@@ -140,9 +140,10 @@ Partial Class edit
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel4.Controls.Add(Me.grpDetail)
-        Me.Panel4.Location = New System.Drawing.Point(12, 12)
+        Me.Panel4.Location = New System.Drawing.Point(16, 15)
+        Me.Panel4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(1008, 537)
+        Me.Panel4.Size = New System.Drawing.Size(1344, 661)
         Me.Panel4.TabIndex = 63
         '
         'grpDetail
@@ -157,9 +158,11 @@ Partial Class edit
         Me.grpDetail.Controls.Add(Me.panButtons)
         Me.grpDetail.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grpDetail.ForeColor = System.Drawing.SystemColors.ActiveCaption
-        Me.grpDetail.Location = New System.Drawing.Point(6, 3)
+        Me.grpDetail.Location = New System.Drawing.Point(8, 4)
+        Me.grpDetail.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.grpDetail.Name = "grpDetail"
-        Me.grpDetail.Size = New System.Drawing.Size(1002, 528)
+        Me.grpDetail.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grpDetail.Size = New System.Drawing.Size(1336, 650)
         Me.grpDetail.TabIndex = 61
         Me.grpDetail.TabStop = False
         Me.grpDetail.Text = "Details"
@@ -172,9 +175,10 @@ Partial Class edit
         Me.panColors.AutoScroll = True
         Me.panColors.AutoSize = True
         Me.panColors.Controls.Add(Me.spltColorDetail)
-        Me.panColors.Location = New System.Drawing.Point(4, 183)
+        Me.panColors.Location = New System.Drawing.Point(5, 225)
+        Me.panColors.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.panColors.Name = "panColors"
-        Me.panColors.Size = New System.Drawing.Size(995, 275)
+        Me.panColors.Size = New System.Drawing.Size(1327, 338)
         Me.panColors.TabIndex = 156
         '
         'spltColorDetail
@@ -199,8 +203,8 @@ Partial Class edit
         Me.spltColorDetail.Panel2.Controls.Add(Me.butFontAug)
         Me.spltColorDetail.Panel2.Controls.Add(Me.lbQuantity)
         Me.spltColorDetail.Panel2.Controls.Add(Me.butFontDim)
-        Me.spltColorDetail.Size = New System.Drawing.Size(995, 275)
-        Me.spltColorDetail.SplitterDistance = 583
+        Me.spltColorDetail.Size = New System.Drawing.Size(1327, 338)
+        Me.spltColorDetail.SplitterDistance = 777
         Me.spltColorDetail.SplitterWidth = 1
         Me.spltColorDetail.TabIndex = 150
         '
@@ -212,19 +216,21 @@ Partial Class edit
         Me.scrollPanel1.AutoScroll = True
         Me.scrollPanel1.Controls.Add(Me.txtColorsDetailHidden)
         Me.scrollPanel1.Controls.Add(Me.pctColorDetailHidden)
-        Me.scrollPanel1.Location = New System.Drawing.Point(7, 39)
+        Me.scrollPanel1.Location = New System.Drawing.Point(9, 48)
+        Me.scrollPanel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.scrollPanel1.Name = "scrollPanel1"
-        Me.scrollPanel1.Size = New System.Drawing.Size(571, 229)
+        Me.scrollPanel1.Size = New System.Drawing.Size(761, 282)
         Me.scrollPanel1.TabIndex = 152
         '
         'txtColorsDetailHidden
         '
         Me.txtColorsDetailHidden.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtColorsDetailHidden.Location = New System.Drawing.Point(41, 3)
+        Me.txtColorsDetailHidden.Location = New System.Drawing.Point(55, 4)
+        Me.txtColorsDetailHidden.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtColorsDetailHidden.Name = "txtColorsDetailHidden"
         Me.txtColorsDetailHidden.ReadOnly = True
-        Me.txtColorsDetailHidden.Size = New System.Drawing.Size(506, 23)
+        Me.txtColorsDetailHidden.Size = New System.Drawing.Size(673, 26)
         Me.txtColorsDetailHidden.TabIndex = 87
         Me.txtColorsDetailHidden.Visible = False
         '
@@ -233,9 +239,10 @@ Partial Class edit
         Me.pctColorDetailHidden.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pctColorDetailHidden.InitialImage = Nothing
-        Me.pctColorDetailHidden.Location = New System.Drawing.Point(8, 3)
+        Me.pctColorDetailHidden.Location = New System.Drawing.Point(11, 4)
+        Me.pctColorDetailHidden.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.pctColorDetailHidden.Name = "pctColorDetailHidden"
-        Me.pctColorDetailHidden.Size = New System.Drawing.Size(247, 23)
+        Me.pctColorDetailHidden.Size = New System.Drawing.Size(329, 28)
         Me.pctColorDetailHidden.TabIndex = 149
         Me.pctColorDetailHidden.TabStop = False
         Me.pctColorDetailHidden.Visible = False
@@ -245,9 +252,10 @@ Partial Class edit
         '
         Me.butEdit.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.butEdit.ForeColor = System.Drawing.Color.Green
-        Me.butEdit.Location = New System.Drawing.Point(509, 7)
+        Me.butEdit.Location = New System.Drawing.Point(679, 9)
+        Me.butEdit.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.butEdit.Name = "butEdit"
-        Me.butEdit.Size = New System.Drawing.Size(55, 26)
+        Me.butEdit.Size = New System.Drawing.Size(73, 32)
         Me.butEdit.TabIndex = 151
         Me.butEdit.Text = "Edit"
         Me.butEdit.UseVisualStyleBackColor = True
@@ -258,9 +266,10 @@ Partial Class edit
         Me.butAddHidden.BackColor = System.Drawing.SystemColors.Control
         Me.butAddHidden.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.butAddHidden.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.butAddHidden.Location = New System.Drawing.Point(478, 9)
+        Me.butAddHidden.Location = New System.Drawing.Point(637, 11)
+        Me.butAddHidden.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.butAddHidden.Name = "butAddHidden"
-        Me.butAddHidden.Size = New System.Drawing.Size(24, 23)
+        Me.butAddHidden.Size = New System.Drawing.Size(32, 28)
         Me.butAddHidden.TabIndex = 150
         Me.butAddHidden.Text = "+"
         Me.butAddHidden.UseVisualStyleBackColor = False
@@ -272,8 +281,9 @@ Partial Class edit
         Me.lbColorDetails.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbColorDetails.ForeColor = System.Drawing.SystemColors.ControlText
         Me.lbColorDetails.Location = New System.Drawing.Point(0, 0)
+        Me.lbColorDetails.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbColorDetails.Name = "lbColorDetails"
-        Me.lbColorDetails.Size = New System.Drawing.Size(41, 15)
+        Me.lbColorDetails.Size = New System.Drawing.Size(50, 18)
         Me.lbColorDetails.TabIndex = 86
         Me.lbColorDetails.Text = "Color"
         '
@@ -285,19 +295,21 @@ Partial Class edit
         Me.scrollPanel2.AutoScroll = True
         Me.scrollPanel2.Controls.Add(Me.txtQuantityDetailHidden)
         Me.scrollPanel2.Controls.Add(Me.butDeleteHidden)
-        Me.scrollPanel2.Location = New System.Drawing.Point(6, 39)
+        Me.scrollPanel2.Location = New System.Drawing.Point(8, 48)
+        Me.scrollPanel2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.scrollPanel2.Name = "scrollPanel2"
-        Me.scrollPanel2.Size = New System.Drawing.Size(400, 229)
+        Me.scrollPanel2.Size = New System.Drawing.Size(535, 282)
         Me.scrollPanel2.TabIndex = 151
         '
         'txtQuantityDetailHidden
         '
         Me.txtQuantityDetailHidden.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtQuantityDetailHidden.Location = New System.Drawing.Point(3, 3)
+        Me.txtQuantityDetailHidden.Location = New System.Drawing.Point(4, 4)
+        Me.txtQuantityDetailHidden.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtQuantityDetailHidden.Name = "txtQuantityDetailHidden"
         Me.txtQuantityDetailHidden.ReadOnly = True
-        Me.txtQuantityDetailHidden.Size = New System.Drawing.Size(349, 23)
+        Me.txtQuantityDetailHidden.Size = New System.Drawing.Size(466, 26)
         Me.txtQuantityDetailHidden.TabIndex = 88
         Me.txtQuantityDetailHidden.Visible = False
         '
@@ -307,9 +319,10 @@ Partial Class edit
         Me.butDeleteHidden.BackColor = System.Drawing.SystemColors.Control
         Me.butDeleteHidden.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.butDeleteHidden.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.butDeleteHidden.Location = New System.Drawing.Point(355, 3)
+        Me.butDeleteHidden.Location = New System.Drawing.Point(475, 4)
+        Me.butDeleteHidden.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.butDeleteHidden.Name = "butDeleteHidden"
-        Me.butDeleteHidden.Size = New System.Drawing.Size(22, 23)
+        Me.butDeleteHidden.Size = New System.Drawing.Size(29, 28)
         Me.butDeleteHidden.TabIndex = 150
         Me.butDeleteHidden.Text = "X"
         Me.butDeleteHidden.UseVisualStyleBackColor = False
@@ -320,9 +333,10 @@ Partial Class edit
         Me.lbplushidden.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lbplushidden.AutoSize = True
-        Me.lbplushidden.Location = New System.Drawing.Point(367, 42)
+        Me.lbplushidden.Location = New System.Drawing.Point(489, 52)
+        Me.lbplushidden.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbplushidden.Name = "lbplushidden"
-        Me.lbplushidden.Size = New System.Drawing.Size(0, 17)
+        Me.lbplushidden.Size = New System.Drawing.Size(0, 20)
         Me.lbplushidden.TabIndex = 149
         Me.lbplushidden.Visible = False
         '
@@ -330,9 +344,10 @@ Partial Class edit
         '
         Me.butFontAug.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.butFontAug.ForeColor = System.Drawing.Color.Green
-        Me.butFontAug.Location = New System.Drawing.Point(289, 7)
+        Me.butFontAug.Location = New System.Drawing.Point(387, 9)
+        Me.butFontAug.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.butFontAug.Name = "butFontAug"
-        Me.butFontAug.Size = New System.Drawing.Size(27, 26)
+        Me.butFontAug.Size = New System.Drawing.Size(36, 32)
         Me.butFontAug.TabIndex = 147
         Me.butFontAug.Text = "+"
         Me.butFontAug.UseVisualStyleBackColor = True
@@ -343,8 +358,9 @@ Partial Class edit
         Me.lbQuantity.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbQuantity.ForeColor = System.Drawing.SystemColors.ControlText
         Me.lbQuantity.Location = New System.Drawing.Point(0, 0)
+        Me.lbQuantity.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbQuantity.Name = "lbQuantity"
-        Me.lbQuantity.Size = New System.Drawing.Size(59, 15)
+        Me.lbQuantity.Size = New System.Drawing.Size(70, 18)
         Me.lbQuantity.TabIndex = 85
         Me.lbQuantity.Text = "Quantity"
         '
@@ -352,9 +368,10 @@ Partial Class edit
         '
         Me.butFontDim.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.butFontDim.ForeColor = System.Drawing.Color.Green
-        Me.butFontDim.Location = New System.Drawing.Point(322, 7)
+        Me.butFontDim.Location = New System.Drawing.Point(431, 9)
+        Me.butFontDim.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.butFontDim.Name = "butFontDim"
-        Me.butFontDim.Size = New System.Drawing.Size(27, 26)
+        Me.butFontDim.Size = New System.Drawing.Size(36, 32)
         Me.butFontDim.TabIndex = 148
         Me.butFontDim.Text = "-"
         Me.butFontDim.UseVisualStyleBackColor = True
@@ -363,17 +380,17 @@ Partial Class edit
         '
         Me.Panel3.Controls.Add(Me.SplitContainer1)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel3.Location = New System.Drawing.Point(3, 19)
+        Me.Panel3.Location = New System.Drawing.Point(4, 23)
         Me.Panel3.Margin = New System.Windows.Forms.Padding(0)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(996, 158)
+        Me.Panel3.Size = New System.Drawing.Size(1328, 194)
         Me.Panel3.TabIndex = 62
         '
         'SplitContainer1
         '
         Me.SplitContainer1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.SplitContainer1.Location = New System.Drawing.Point(6, 6)
+        Me.SplitContainer1.Location = New System.Drawing.Point(8, 7)
         Me.SplitContainer1.Margin = New System.Windows.Forms.Padding(0)
         Me.SplitContainer1.Name = "SplitContainer1"
         '
@@ -388,15 +405,17 @@ Partial Class edit
         Me.SplitContainer1.Panel2.Controls.Add(Me.lbYear)
         Me.SplitContainer1.Panel2.Controls.Add(Me.grpCorrectionMode)
         Me.SplitContainer1.Panel2.Controls.Add(Me.txtCardNumber)
-        Me.SplitContainer1.Size = New System.Drawing.Size(987, 149)
-        Me.SplitContainer1.SplitterDistance = 742
+        Me.SplitContainer1.Size = New System.Drawing.Size(1316, 183)
+        Me.SplitContainer1.SplitterDistance = 989
+        Me.SplitContainer1.SplitterWidth = 5
         Me.SplitContainer1.TabIndex = 170
         '
         'SplitContainer2
         '
         Me.SplitContainer2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.SplitContainer2.Location = New System.Drawing.Point(3, 3)
+        Me.SplitContainer2.Location = New System.Drawing.Point(4, 4)
+        Me.SplitContainer2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.SplitContainer2.Name = "SplitContainer2"
         '
         'SplitContainer2.Panel1
@@ -427,8 +446,9 @@ Partial Class edit
         Me.SplitContainer2.Panel2.Controls.Add(Me.lbFormulaName)
         Me.SplitContainer2.Panel2.Controls.Add(Me.txtFname)
         Me.SplitContainer2.Panel2.Controls.Add(Me.Label3)
-        Me.SplitContainer2.Size = New System.Drawing.Size(736, 143)
-        Me.SplitContainer2.SplitterDistance = 360
+        Me.SplitContainer2.Size = New System.Drawing.Size(981, 176)
+        Me.SplitContainer2.SplitterDistance = 479
+        Me.SplitContainer2.SplitterWidth = 5
         Me.SplitContainer2.TabIndex = 179
         '
         'MyGroupBox1
@@ -443,10 +463,11 @@ Partial Class edit
         Me.MyGroupBox1.Controls.Add(Me.chkVariantCL)
         Me.MyGroupBox1.Controls.Add(Me.chkVariantL)
         Me.MyGroupBox1.Controls.Add(Me.chkVariantR)
-        Me.MyGroupBox1.Location = New System.Drawing.Point(108, 91)
+        Me.MyGroupBox1.Location = New System.Drawing.Point(144, 112)
         Me.MyGroupBox1.Margin = New System.Windows.Forms.Padding(0)
         Me.MyGroupBox1.Name = "MyGroupBox1"
-        Me.MyGroupBox1.Size = New System.Drawing.Size(156, 55)
+        Me.MyGroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MyGroupBox1.Size = New System.Drawing.Size(208, 68)
         Me.MyGroupBox1.TabIndex = 144
         Me.MyGroupBox1.TabStop = False
         '
@@ -455,10 +476,10 @@ Partial Class edit
         Me.chkVariantY.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.chkVariantY.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.chkVariantY.Cursor = System.Windows.Forms.Cursors.Arrow
-        Me.chkVariantY.Location = New System.Drawing.Point(8, 34)
-        Me.chkVariantY.Margin = New System.Windows.Forms.Padding(4)
+        Me.chkVariantY.Location = New System.Drawing.Point(11, 42)
+        Me.chkVariantY.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.chkVariantY.Name = "chkVariantY"
-        Me.chkVariantY.Size = New System.Drawing.Size(26, 17)
+        Me.chkVariantY.Size = New System.Drawing.Size(33, 20)
         Me.chkVariantY.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.chkVariantY.TabIndex = 176
         Me.chkVariantY.TabStop = False
@@ -469,10 +490,10 @@ Partial Class edit
         Me.chkVariantD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.chkVariantD.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.chkVariantD.Cursor = System.Windows.Forms.Cursors.Arrow
-        Me.chkVariantD.Location = New System.Drawing.Point(8, 14)
-        Me.chkVariantD.Margin = New System.Windows.Forms.Padding(4)
+        Me.chkVariantD.Location = New System.Drawing.Point(11, 17)
+        Me.chkVariantD.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.chkVariantD.Name = "chkVariantD"
-        Me.chkVariantD.Size = New System.Drawing.Size(26, 17)
+        Me.chkVariantD.Size = New System.Drawing.Size(33, 20)
         Me.chkVariantD.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.chkVariantD.TabIndex = 175
         Me.chkVariantD.TabStop = False
@@ -483,10 +504,10 @@ Partial Class edit
         Me.chkVariantB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.chkVariantB.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.chkVariantB.Cursor = System.Windows.Forms.Cursors.Arrow
-        Me.chkVariantB.Location = New System.Drawing.Point(37, 34)
-        Me.chkVariantB.Margin = New System.Windows.Forms.Padding(4)
+        Me.chkVariantB.Location = New System.Drawing.Point(49, 42)
+        Me.chkVariantB.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.chkVariantB.Name = "chkVariantB"
-        Me.chkVariantB.Size = New System.Drawing.Size(26, 17)
+        Me.chkVariantB.Size = New System.Drawing.Size(33, 20)
         Me.chkVariantB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.chkVariantB.TabIndex = 174
         Me.chkVariantB.TabStop = False
@@ -497,10 +518,10 @@ Partial Class edit
         Me.chkVariantF.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.chkVariantF.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.chkVariantF.Cursor = System.Windows.Forms.Cursors.Arrow
-        Me.chkVariantF.Location = New System.Drawing.Point(37, 14)
-        Me.chkVariantF.Margin = New System.Windows.Forms.Padding(4)
+        Me.chkVariantF.Location = New System.Drawing.Point(49, 17)
+        Me.chkVariantF.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.chkVariantF.Name = "chkVariantF"
-        Me.chkVariantF.Size = New System.Drawing.Size(26, 17)
+        Me.chkVariantF.Size = New System.Drawing.Size(33, 20)
         Me.chkVariantF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.chkVariantF.TabIndex = 173
         Me.chkVariantF.TabStop = False
@@ -511,10 +532,10 @@ Partial Class edit
         Me.chkVariantDRT.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.chkVariantDRT.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.chkVariantDRT.Cursor = System.Windows.Forms.Cursors.Arrow
-        Me.chkVariantDRT.Location = New System.Drawing.Point(66, 14)
-        Me.chkVariantDRT.Margin = New System.Windows.Forms.Padding(4)
+        Me.chkVariantDRT.Location = New System.Drawing.Point(88, 17)
+        Me.chkVariantDRT.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.chkVariantDRT.Name = "chkVariantDRT"
-        Me.chkVariantDRT.Size = New System.Drawing.Size(26, 17)
+        Me.chkVariantDRT.Size = New System.Drawing.Size(33, 20)
         Me.chkVariantDRT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.chkVariantDRT.TabIndex = 172
         Me.chkVariantDRT.TabStop = False
@@ -525,10 +546,10 @@ Partial Class edit
         Me.chkVariantCO.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.chkVariantCO.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.chkVariantCO.Cursor = System.Windows.Forms.Cursors.Arrow
-        Me.chkVariantCO.Location = New System.Drawing.Point(66, 34)
-        Me.chkVariantCO.Margin = New System.Windows.Forms.Padding(4)
+        Me.chkVariantCO.Location = New System.Drawing.Point(88, 42)
+        Me.chkVariantCO.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.chkVariantCO.Name = "chkVariantCO"
-        Me.chkVariantCO.Size = New System.Drawing.Size(26, 17)
+        Me.chkVariantCO.Size = New System.Drawing.Size(33, 20)
         Me.chkVariantCO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.chkVariantCO.TabIndex = 171
         Me.chkVariantCO.TabStop = False
@@ -539,10 +560,10 @@ Partial Class edit
         Me.chkVariantG.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.chkVariantG.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.chkVariantG.Cursor = System.Windows.Forms.Cursors.Arrow
-        Me.chkVariantG.Location = New System.Drawing.Point(95, 34)
-        Me.chkVariantG.Margin = New System.Windows.Forms.Padding(4)
+        Me.chkVariantG.Location = New System.Drawing.Point(127, 42)
+        Me.chkVariantG.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.chkVariantG.Name = "chkVariantG"
-        Me.chkVariantG.Size = New System.Drawing.Size(26, 17)
+        Me.chkVariantG.Size = New System.Drawing.Size(33, 20)
         Me.chkVariantG.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.chkVariantG.TabIndex = 170
         Me.chkVariantG.TabStop = False
@@ -553,10 +574,10 @@ Partial Class edit
         Me.chkVariantCL.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.chkVariantCL.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.chkVariantCL.Cursor = System.Windows.Forms.Cursors.Arrow
-        Me.chkVariantCL.Location = New System.Drawing.Point(95, 14)
-        Me.chkVariantCL.Margin = New System.Windows.Forms.Padding(4)
+        Me.chkVariantCL.Location = New System.Drawing.Point(127, 17)
+        Me.chkVariantCL.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.chkVariantCL.Name = "chkVariantCL"
-        Me.chkVariantCL.Size = New System.Drawing.Size(26, 17)
+        Me.chkVariantCL.Size = New System.Drawing.Size(33, 20)
         Me.chkVariantCL.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.chkVariantCL.TabIndex = 169
         Me.chkVariantCL.TabStop = False
@@ -567,10 +588,10 @@ Partial Class edit
         Me.chkVariantL.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.chkVariantL.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.chkVariantL.Cursor = System.Windows.Forms.Cursors.Arrow
-        Me.chkVariantL.Location = New System.Drawing.Point(124, 34)
-        Me.chkVariantL.Margin = New System.Windows.Forms.Padding(4)
+        Me.chkVariantL.Location = New System.Drawing.Point(165, 42)
+        Me.chkVariantL.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.chkVariantL.Name = "chkVariantL"
-        Me.chkVariantL.Size = New System.Drawing.Size(26, 17)
+        Me.chkVariantL.Size = New System.Drawing.Size(33, 20)
         Me.chkVariantL.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.chkVariantL.TabIndex = 168
         Me.chkVariantL.TabStop = False
@@ -581,10 +602,10 @@ Partial Class edit
         Me.chkVariantR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.chkVariantR.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.chkVariantR.Cursor = System.Windows.Forms.Cursors.Arrow
-        Me.chkVariantR.Location = New System.Drawing.Point(124, 14)
-        Me.chkVariantR.Margin = New System.Windows.Forms.Padding(4)
+        Me.chkVariantR.Location = New System.Drawing.Point(165, 17)
+        Me.chkVariantR.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.chkVariantR.Name = "chkVariantR"
-        Me.chkVariantR.Size = New System.Drawing.Size(26, 17)
+        Me.chkVariantR.Size = New System.Drawing.Size(33, 20)
         Me.chkVariantR.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.chkVariantR.TabIndex = 167
         Me.chkVariantR.TabStop = False
@@ -595,9 +616,10 @@ Partial Class edit
         Me.lbTotalQty.AutoSize = True
         Me.lbTotalQty.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbTotalQty.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lbTotalQty.Location = New System.Drawing.Point(6, 5)
+        Me.lbTotalQty.Location = New System.Drawing.Point(8, 6)
+        Me.lbTotalQty.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbTotalQty.Name = "lbTotalQty"
-        Me.lbTotalQty.Size = New System.Drawing.Size(99, 15)
+        Me.lbTotalQty.Size = New System.Drawing.Size(118, 18)
         Me.lbTotalQty.TabIndex = 100
         Me.lbTotalQty.Text = "Total Quantity:"
         '
@@ -606,9 +628,10 @@ Partial Class edit
         Me.lbcarDetails.AutoSize = True
         Me.lbcarDetails.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbcarDetails.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lbcarDetails.Location = New System.Drawing.Point(9, 67)
+        Me.lbcarDetails.Location = New System.Drawing.Point(12, 82)
+        Me.lbcarDetails.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbcarDetails.Name = "lbcarDetails"
-        Me.lbcarDetails.Size = New System.Drawing.Size(33, 15)
+        Me.lbcarDetails.Size = New System.Drawing.Size(40, 18)
         Me.lbcarDetails.TabIndex = 152
         Me.lbcarDetails.Text = "Car:"
         '
@@ -617,9 +640,10 @@ Partial Class edit
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label1.Location = New System.Drawing.Point(9, 39)
+        Me.Label1.Location = New System.Drawing.Point(12, 48)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(44, 15)
+        Me.Label1.Size = New System.Drawing.Size(53, 18)
         Me.Label1.TabIndex = 169
         Me.Label1.Text = "Code:"
         '
@@ -628,11 +652,11 @@ Partial Class edit
         Me.txtCarDetails.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtCarDetails.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCarDetails.Location = New System.Drawing.Point(108, 62)
-        Me.txtCarDetails.Margin = New System.Windows.Forms.Padding(3, 0, 3, 3)
+        Me.txtCarDetails.Location = New System.Drawing.Point(144, 76)
+        Me.txtCarDetails.Margin = New System.Windows.Forms.Padding(4, 0, 4, 4)
         Me.txtCarDetails.Name = "txtCarDetails"
         Me.txtCarDetails.ReadOnly = True
-        Me.txtCarDetails.Size = New System.Drawing.Size(239, 23)
+        Me.txtCarDetails.Size = New System.Drawing.Size(316, 26)
         Me.txtCarDetails.TabIndex = 3
         '
         'txtTotalQty
@@ -641,10 +665,11 @@ Partial Class edit
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtTotalQty.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTotalQty.ForeColor = System.Drawing.Color.Red
-        Me.txtTotalQty.Location = New System.Drawing.Point(108, 2)
+        Me.txtTotalQty.Location = New System.Drawing.Point(144, 2)
+        Me.txtTotalQty.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtTotalQty.MaxLength = 10
         Me.txtTotalQty.Name = "txtTotalQty"
-        Me.txtTotalQty.Size = New System.Drawing.Size(239, 35)
+        Me.txtTotalQty.Size = New System.Drawing.Size(316, 41)
         Me.txtTotalQty.TabIndex = 0
         '
         'pctFormulaColor
@@ -653,10 +678,10 @@ Partial Class edit
         Me.pctFormulaColor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.pctFormulaColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.pctFormulaColor.Cursor = System.Windows.Forms.Cursors.Arrow
-        Me.pctFormulaColor.Location = New System.Drawing.Point(69, 103)
-        Me.pctFormulaColor.Margin = New System.Windows.Forms.Padding(4)
+        Me.pctFormulaColor.Location = New System.Drawing.Point(92, 127)
+        Me.pctFormulaColor.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.pctFormulaColor.Name = "pctFormulaColor"
-        Me.pctFormulaColor.Size = New System.Drawing.Size(14, 33)
+        Me.pctFormulaColor.Size = New System.Drawing.Size(17, 40)
         Me.pctFormulaColor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pctFormulaColor.TabIndex = 154
         Me.pctFormulaColor.TabStop = False
@@ -665,9 +690,10 @@ Partial Class edit
         '
         Me.pctCarImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.pctCarImg.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.pctCarImg.Location = New System.Drawing.Point(11, 103)
+        Me.pctCarImg.Location = New System.Drawing.Point(15, 127)
+        Me.pctCarImg.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.pctCarImg.Name = "pctCarImg"
-        Me.pctCarImg.Size = New System.Drawing.Size(54, 33)
+        Me.pctCarImg.Size = New System.Drawing.Size(71, 40)
         Me.pctCarImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pctCarImg.TabIndex = 83
         Me.pctCarImg.TabStop = False
@@ -677,21 +703,35 @@ Partial Class edit
         Me.txtFormulaCode.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtFormulaCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFormulaCode.Location = New System.Drawing.Point(108, 38)
+        Me.txtFormulaCode.Location = New System.Drawing.Point(144, 47)
+        Me.txtFormulaCode.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtFormulaCode.Name = "txtFormulaCode"
         Me.txtFormulaCode.ReadOnly = True
-        Me.txtFormulaCode.Size = New System.Drawing.Size(239, 23)
+        Me.txtFormulaCode.Size = New System.Drawing.Size(316, 26)
         Me.txtFormulaCode.TabIndex = 5
+        '
+        'lbAsteriks
+        '
+        Me.lbAsteriks.AutoSize = True
+        Me.lbAsteriks.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbAsteriks.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.lbAsteriks.Location = New System.Drawing.Point(137, 143)
+        Me.lbAsteriks.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbAsteriks.Name = "lbAsteriks"
+        Me.lbAsteriks.Size = New System.Drawing.Size(21, 25)
+        Me.lbAsteriks.TabIndex = 179
+        Me.lbAsteriks.Text = "*"
         '
         'txtModDate
         '
         Me.txtModDate.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtModDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtModDate.Location = New System.Drawing.Point(125, 113)
+        Me.txtModDate.Location = New System.Drawing.Point(167, 139)
+        Me.txtModDate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtModDate.Name = "txtModDate"
         Me.txtModDate.ReadOnly = True
-        Me.txtModDate.Size = New System.Drawing.Size(166, 23)
+        Me.txtModDate.Size = New System.Drawing.Size(221, 26)
         Me.txtModDate.TabIndex = 178
         '
         'cmbClientName
@@ -699,10 +739,10 @@ Partial Class edit
         Me.cmbClientName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmbClientName.FormattingEnabled = True
-        Me.cmbClientName.Location = New System.Drawing.Point(107, 4)
-        Me.cmbClientName.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbClientName.Location = New System.Drawing.Point(143, 5)
+        Me.cmbClientName.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.cmbClientName.Name = "cmbClientName"
-        Me.cmbClientName.Size = New System.Drawing.Size(251, 24)
+        Me.cmbClientName.Size = New System.Drawing.Size(334, 28)
         Me.cmbClientName.TabIndex = 171
         '
         'Label2
@@ -712,9 +752,10 @@ Partial Class edit
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label2.Location = New System.Drawing.Point(6, 118)
+        Me.Label2.Location = New System.Drawing.Point(8, 145)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(75, 15)
+        Me.Label2.Size = New System.Drawing.Size(88, 18)
         Me.Label2.TabIndex = 177
         Me.Label2.Text = "Mod. date:"
         '
@@ -724,9 +765,10 @@ Partial Class edit
         Me.lbCurrencyDetailsValue.AutoSize = True
         Me.lbCurrencyDetailsValue.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbCurrencyDetailsValue.ForeColor = System.Drawing.SystemColors.ActiveCaption
-        Me.lbCurrencyDetailsValue.Location = New System.Drawing.Point(325, 41)
+        Me.lbCurrencyDetailsValue.Location = New System.Drawing.Point(434, 50)
+        Me.lbCurrencyDetailsValue.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbCurrencyDetailsValue.Name = "lbCurrencyDetailsValue"
-        Me.lbCurrencyDetailsValue.Size = New System.Drawing.Size(21, 15)
+        Me.lbCurrencyDetailsValue.Size = New System.Drawing.Size(25, 18)
         Me.lbCurrencyDetailsValue.TabIndex = 98
         Me.lbCurrencyDetailsValue.Text = "- -"
         '
@@ -735,9 +777,10 @@ Partial Class edit
         Me.butKilo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.butKilo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.butKilo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.butKilo.Location = New System.Drawing.Point(328, 113)
+        Me.butKilo.Location = New System.Drawing.Point(438, 139)
+        Me.butKilo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.butKilo.Name = "butKilo"
-        Me.butKilo.Size = New System.Drawing.Size(30, 23)
+        Me.butKilo.Size = New System.Drawing.Size(40, 28)
         Me.butKilo.TabIndex = 166
         Me.butKilo.Text = "K"
         Me.butKilo.UseVisualStyleBackColor = True
@@ -749,9 +792,10 @@ Partial Class edit
         Me.lbTotalPrice.AutoSize = True
         Me.lbTotalPrice.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbTotalPrice.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lbTotalPrice.Location = New System.Drawing.Point(6, 41)
+        Me.lbTotalPrice.Location = New System.Drawing.Point(8, 50)
+        Me.lbTotalPrice.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbTotalPrice.Name = "lbTotalPrice"
-        Me.lbTotalPrice.Size = New System.Drawing.Size(80, 15)
+        Me.lbTotalPrice.Size = New System.Drawing.Size(95, 18)
         Me.lbTotalPrice.TabIndex = 96
         Me.lbTotalPrice.Text = "Total Price:"
         '
@@ -760,9 +804,10 @@ Partial Class edit
         Me.butLitre.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.butLitre.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.butLitre.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.butLitre.Location = New System.Drawing.Point(297, 113)
+        Me.butLitre.Location = New System.Drawing.Point(397, 139)
+        Me.butLitre.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.butLitre.Name = "butLitre"
-        Me.butLitre.Size = New System.Drawing.Size(30, 23)
+        Me.butLitre.Size = New System.Drawing.Size(40, 28)
         Me.butLitre.TabIndex = 165
         Me.butLitre.Text = "L"
         Me.butLitre.UseVisualStyleBackColor = True
@@ -773,10 +818,11 @@ Partial Class edit
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtTotalPrice.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTotalPrice.ForeColor = System.Drawing.Color.Red
-        Me.txtTotalPrice.Location = New System.Drawing.Point(107, 29)
+        Me.txtTotalPrice.Location = New System.Drawing.Point(143, 36)
+        Me.txtTotalPrice.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtTotalPrice.Name = "txtTotalPrice"
         Me.txtTotalPrice.ReadOnly = True
-        Me.txtTotalPrice.Size = New System.Drawing.Size(212, 35)
+        Me.txtTotalPrice.Size = New System.Drawing.Size(282, 41)
         Me.txtTotalPrice.TabIndex = 2
         '
         'lbClient
@@ -786,9 +832,10 @@ Partial Class edit
         Me.lbClient.AutoSize = True
         Me.lbClient.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbClient.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lbClient.Location = New System.Drawing.Point(6, 9)
+        Me.lbClient.Location = New System.Drawing.Point(8, 11)
+        Me.lbClient.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbClient.Name = "lbClient"
-        Me.lbClient.Size = New System.Drawing.Size(88, 15)
+        Me.lbClient.Size = New System.Drawing.Size(102, 18)
         Me.lbClient.TabIndex = 176
         Me.lbClient.Text = "Client name:"
         '
@@ -797,10 +844,11 @@ Partial Class edit
         Me.txtHue.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtHue.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtHue.Location = New System.Drawing.Point(107, 89)
+        Me.txtHue.Location = New System.Drawing.Point(143, 110)
+        Me.txtHue.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtHue.Name = "txtHue"
         Me.txtHue.ReadOnly = True
-        Me.txtHue.Size = New System.Drawing.Size(251, 23)
+        Me.txtHue.Size = New System.Drawing.Size(334, 26)
         Me.txtHue.TabIndex = 171
         '
         'lbFormulaName
@@ -810,9 +858,10 @@ Partial Class edit
         Me.lbFormulaName.AutoSize = True
         Me.lbFormulaName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbFormulaName.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lbFormulaName.Location = New System.Drawing.Point(6, 70)
+        Me.lbFormulaName.Location = New System.Drawing.Point(8, 86)
+        Me.lbFormulaName.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbFormulaName.Name = "lbFormulaName"
-        Me.lbFormulaName.Size = New System.Drawing.Size(104, 15)
+        Me.lbFormulaName.Size = New System.Drawing.Size(121, 18)
         Me.lbFormulaName.TabIndex = 173
         Me.lbFormulaName.Text = "Formula name:"
         '
@@ -821,10 +870,11 @@ Partial Class edit
         Me.txtFname.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtFname.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFname.Location = New System.Drawing.Point(107, 65)
+        Me.txtFname.Location = New System.Drawing.Point(143, 80)
+        Me.txtFname.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtFname.Name = "txtFname"
         Me.txtFname.ReadOnly = True
-        Me.txtFname.Size = New System.Drawing.Size(251, 23)
+        Me.txtFname.Size = New System.Drawing.Size(334, 26)
         Me.txtFname.TabIndex = 170
         '
         'Label3
@@ -834,9 +884,10 @@ Partial Class edit
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label3.Location = New System.Drawing.Point(6, 92)
+        Me.Label3.Location = New System.Drawing.Point(8, 113)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(37, 15)
+        Me.Label3.Size = New System.Drawing.Size(43, 18)
         Me.Label3.TabIndex = 172
         Me.Label3.Text = "Hue:"
         '
@@ -847,9 +898,10 @@ Partial Class edit
         Me.lbCardNumber.AutoSize = True
         Me.lbCardNumber.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbCardNumber.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lbCardNumber.Location = New System.Drawing.Point(9, 53)
+        Me.lbCardNumber.Location = New System.Drawing.Point(12, 65)
+        Me.lbCardNumber.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbCardNumber.Name = "lbCardNumber"
-        Me.lbCardNumber.Size = New System.Drawing.Size(83, 13)
+        Me.lbCardNumber.Size = New System.Drawing.Size(96, 15)
         Me.lbCardNumber.TabIndex = 175
         Me.lbCardNumber.Text = "Card Number:"
         '
@@ -858,10 +910,11 @@ Partial Class edit
         Me.txtYear.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtYear.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtYear.Location = New System.Drawing.Point(95, 6)
+        Me.txtYear.Location = New System.Drawing.Point(127, 7)
+        Me.txtYear.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtYear.Name = "txtYear"
         Me.txtYear.ReadOnly = True
-        Me.txtYear.Size = New System.Drawing.Size(143, 23)
+        Me.txtYear.Size = New System.Drawing.Size(190, 26)
         Me.txtYear.TabIndex = 4
         '
         'lbYear
@@ -871,9 +924,10 @@ Partial Class edit
         Me.lbYear.AutoSize = True
         Me.lbYear.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbYear.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lbYear.Location = New System.Drawing.Point(9, 12)
+        Me.lbYear.Location = New System.Drawing.Point(12, 15)
+        Me.lbYear.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbYear.Name = "lbYear"
-        Me.lbYear.Size = New System.Drawing.Size(37, 13)
+        Me.lbYear.Size = New System.Drawing.Size(40, 15)
         Me.lbYear.TabIndex = 155
         Me.lbYear.Text = "Year:"
         '
@@ -889,9 +943,11 @@ Partial Class edit
         Me.grpCorrectionMode.Controls.Add(Me.lbUnitMesureValue)
         Me.grpCorrectionMode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grpCorrectionMode.ForeColor = System.Drawing.SystemColors.ActiveCaption
-        Me.grpCorrectionMode.Location = New System.Drawing.Point(3, 81)
+        Me.grpCorrectionMode.Location = New System.Drawing.Point(4, 100)
+        Me.grpCorrectionMode.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.grpCorrectionMode.Name = "grpCorrectionMode"
-        Me.grpCorrectionMode.Size = New System.Drawing.Size(235, 64)
+        Me.grpCorrectionMode.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grpCorrectionMode.Size = New System.Drawing.Size(314, 79)
         Me.grpCorrectionMode.TabIndex = 83
         Me.grpCorrectionMode.TabStop = False
         '
@@ -900,9 +956,10 @@ Partial Class edit
         Me.rdCorrection.AutoSize = True
         Me.rdCorrection.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.rdCorrection.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.rdCorrection.Location = New System.Drawing.Point(6, 44)
+        Me.rdCorrection.Location = New System.Drawing.Point(8, 54)
+        Me.rdCorrection.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.rdCorrection.Name = "rdCorrection"
-        Me.rdCorrection.Size = New System.Drawing.Size(82, 17)
+        Me.rdCorrection.Size = New System.Drawing.Size(94, 19)
         Me.rdCorrection.TabIndex = 81
         Me.rdCorrection.Text = "Correction"
         Me.rdCorrection.UseVisualStyleBackColor = True
@@ -913,9 +970,10 @@ Partial Class edit
         Me.rdNormal.Checked = True
         Me.rdNormal.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.rdNormal.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.rdNormal.Location = New System.Drawing.Point(99, 16)
+        Me.rdNormal.Location = New System.Drawing.Point(132, 20)
+        Me.rdNormal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.rdNormal.Name = "rdNormal"
-        Me.rdNormal.Size = New System.Drawing.Size(63, 17)
+        Me.rdNormal.Size = New System.Drawing.Size(75, 19)
         Me.rdNormal.TabIndex = 80
         Me.rdNormal.TabStop = True
         Me.rdNormal.Text = "Normal"
@@ -926,9 +984,10 @@ Partial Class edit
         Me.rdCumulative.AutoSize = True
         Me.rdCumulative.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.rdCumulative.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.rdCumulative.Location = New System.Drawing.Point(6, 16)
+        Me.rdCumulative.Location = New System.Drawing.Point(8, 20)
+        Me.rdCumulative.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.rdCumulative.Name = "rdCumulative"
-        Me.rdCumulative.Size = New System.Drawing.Size(87, 17)
+        Me.rdCumulative.Size = New System.Drawing.Size(99, 19)
         Me.rdCumulative.TabIndex = 78
         Me.rdCumulative.Text = "Cumulative"
         Me.rdCumulative.UseVisualStyleBackColor = True
@@ -939,9 +998,10 @@ Partial Class edit
         Me.lbCurrencyDetails.AutoSize = True
         Me.lbCurrencyDetails.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbCurrencyDetails.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lbCurrencyDetails.Location = New System.Drawing.Point(184, 9)
+        Me.lbCurrencyDetails.Location = New System.Drawing.Point(246, 11)
+        Me.lbCurrencyDetails.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbCurrencyDetails.Name = "lbCurrencyDetails"
-        Me.lbCurrencyDetails.Size = New System.Drawing.Size(67, 15)
+        Me.lbCurrencyDetails.Size = New System.Drawing.Size(81, 18)
         Me.lbCurrencyDetails.TabIndex = 97
         Me.lbCurrencyDetails.Text = "Currency:"
         Me.lbCurrencyDetails.Visible = False
@@ -952,9 +1012,10 @@ Partial Class edit
         Me.lbUnitMesure.AutoSize = True
         Me.lbUnitMesure.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbUnitMesure.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lbUnitMesure.Location = New System.Drawing.Point(189, 41)
+        Me.lbUnitMesure.Location = New System.Drawing.Point(253, 50)
+        Me.lbUnitMesure.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbUnitMesure.Name = "lbUnitMesure"
-        Me.lbUnitMesure.Size = New System.Drawing.Size(37, 15)
+        Me.lbUnitMesure.Size = New System.Drawing.Size(43, 18)
         Me.lbUnitMesure.TabIndex = 91
         Me.lbUnitMesure.Text = "Unit:"
         Me.lbUnitMesure.Visible = False
@@ -965,9 +1026,10 @@ Partial Class edit
         Me.lbUnitMesureValue.AutoSize = True
         Me.lbUnitMesureValue.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbUnitMesureValue.ForeColor = System.Drawing.SystemColors.ActiveCaption
-        Me.lbUnitMesureValue.Location = New System.Drawing.Point(198, 20)
+        Me.lbUnitMesureValue.Location = New System.Drawing.Point(265, 25)
+        Me.lbUnitMesureValue.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbUnitMesureValue.Name = "lbUnitMesureValue"
-        Me.lbUnitMesureValue.Size = New System.Drawing.Size(21, 15)
+        Me.lbUnitMesureValue.Size = New System.Drawing.Size(25, 18)
         Me.lbUnitMesureValue.TabIndex = 92
         Me.lbUnitMesureValue.Text = "- -"
         Me.lbUnitMesureValue.Visible = False
@@ -977,10 +1039,11 @@ Partial Class edit
         Me.txtCardNumber.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtCardNumber.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCardNumber.Location = New System.Drawing.Point(95, 47)
+        Me.txtCardNumber.Location = New System.Drawing.Point(127, 58)
+        Me.txtCardNumber.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtCardNumber.Name = "txtCardNumber"
         Me.txtCardNumber.ReadOnly = True
-        Me.txtCardNumber.Size = New System.Drawing.Size(143, 23)
+        Me.txtCardNumber.Size = New System.Drawing.Size(190, 26)
         Me.txtCardNumber.TabIndex = 174
         '
         'panButtons
@@ -995,18 +1058,20 @@ Partial Class edit
         Me.panButtons.Controls.Add(Me.butValidateHidden)
         Me.panButtons.Controls.Add(Me.lbFormulaId)
         Me.panButtons.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.panButtons.Location = New System.Drawing.Point(3, 458)
+        Me.panButtons.Location = New System.Drawing.Point(4, 564)
+        Me.panButtons.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.panButtons.Name = "panButtons"
-        Me.panButtons.Size = New System.Drawing.Size(996, 67)
+        Me.panButtons.Size = New System.Drawing.Size(1328, 82)
         Me.panButtons.TabIndex = 155
         '
         'butClear
         '
         Me.butClear.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.butClear.ForeColor = System.Drawing.Color.Green
-        Me.butClear.Location = New System.Drawing.Point(610, 7)
+        Me.butClear.Location = New System.Drawing.Point(813, 9)
+        Me.butClear.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.butClear.Name = "butClear"
-        Me.butClear.Size = New System.Drawing.Size(103, 23)
+        Me.butClear.Size = New System.Drawing.Size(137, 28)
         Me.butClear.TabIndex = 165
         Me.butClear.Text = "Clear"
         Me.butClear.UseVisualStyleBackColor = True
@@ -1014,9 +1079,10 @@ Partial Class edit
         'butPrintDialog
         '
         Me.butPrintDialog.ForeColor = System.Drawing.Color.Green
-        Me.butPrintDialog.Location = New System.Drawing.Point(215, 35)
+        Me.butPrintDialog.Location = New System.Drawing.Point(287, 43)
+        Me.butPrintDialog.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.butPrintDialog.Name = "butPrintDialog"
-        Me.butPrintDialog.Size = New System.Drawing.Size(101, 26)
+        Me.butPrintDialog.Size = New System.Drawing.Size(135, 32)
         Me.butPrintDialog.TabIndex = 164
         Me.butPrintDialog.Text = "Printers"
         Me.butPrintDialog.UseVisualStyleBackColor = True
@@ -1026,9 +1092,10 @@ Partial Class edit
         '
         Me.butDeleteClientFormula.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.butDeleteClientFormula.ForeColor = System.Drawing.Color.Red
-        Me.butDeleteClientFormula.Location = New System.Drawing.Point(719, 33)
+        Me.butDeleteClientFormula.Location = New System.Drawing.Point(959, 41)
+        Me.butDeleteClientFormula.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.butDeleteClientFormula.Name = "butDeleteClientFormula"
-        Me.butDeleteClientFormula.Size = New System.Drawing.Size(143, 28)
+        Me.butDeleteClientFormula.Size = New System.Drawing.Size(191, 34)
         Me.butDeleteClientFormula.TabIndex = 163
         Me.butDeleteClientFormula.Text = "X"
         Me.butDeleteClientFormula.UseVisualStyleBackColor = True
@@ -1038,9 +1105,10 @@ Partial Class edit
         Me.butBack.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.butBack.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.butBack.ForeColor = System.Drawing.Color.Green
-        Me.butBack.Location = New System.Drawing.Point(868, 35)
+        Me.butBack.Location = New System.Drawing.Point(1157, 43)
+        Me.butBack.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.butBack.Name = "butBack"
-        Me.butBack.Size = New System.Drawing.Size(125, 26)
+        Me.butBack.Size = New System.Drawing.Size(167, 32)
         Me.butBack.TabIndex = 155
         Me.butBack.Text = "Back"
         Me.butBack.UseVisualStyleBackColor = True
@@ -1050,9 +1118,10 @@ Partial Class edit
         Me.butSaveNew.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.butSaveNew.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.butSaveNew.ForeColor = System.Drawing.Color.Green
-        Me.butSaveNew.Location = New System.Drawing.Point(719, 6)
+        Me.butSaveNew.Location = New System.Drawing.Point(959, 7)
+        Me.butSaveNew.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.butSaveNew.Name = "butSaveNew"
-        Me.butSaveNew.Size = New System.Drawing.Size(143, 26)
+        Me.butSaveNew.Size = New System.Drawing.Size(191, 32)
         Me.butSaveNew.TabIndex = 154
         Me.butSaveNew.Text = "Save"
         Me.butSaveNew.UseVisualStyleBackColor = True
@@ -1062,9 +1131,10 @@ Partial Class edit
         Me.butTransactionHistory.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.butTransactionHistory.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.butTransactionHistory.ForeColor = System.Drawing.Color.Green
-        Me.butTransactionHistory.Location = New System.Drawing.Point(6, 35)
+        Me.butTransactionHistory.Location = New System.Drawing.Point(8, 43)
+        Me.butTransactionHistory.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.butTransactionHistory.Name = "butTransactionHistory"
-        Me.butTransactionHistory.Size = New System.Drawing.Size(203, 26)
+        Me.butTransactionHistory.Size = New System.Drawing.Size(271, 32)
         Me.butTransactionHistory.TabIndex = 150
         Me.butTransactionHistory.Text = "Transactions History"
         Me.butTransactionHistory.UseVisualStyleBackColor = True
@@ -1074,9 +1144,10 @@ Partial Class edit
         Me.butPrint.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.butPrint.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.butPrint.ForeColor = System.Drawing.Color.Green
-        Me.butPrint.Location = New System.Drawing.Point(6, 5)
+        Me.butPrint.Location = New System.Drawing.Point(8, 6)
+        Me.butPrint.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.butPrint.Name = "butPrint"
-        Me.butPrint.Size = New System.Drawing.Size(203, 26)
+        Me.butPrint.Size = New System.Drawing.Size(271, 32)
         Me.butPrint.TabIndex = 152
         Me.butPrint.Text = "Print"
         Me.butPrint.UseVisualStyleBackColor = True
@@ -1086,9 +1157,10 @@ Partial Class edit
         Me.butValidateHidden.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.butValidateHidden.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.butValidateHidden.ForeColor = System.Drawing.Color.Green
-        Me.butValidateHidden.Location = New System.Drawing.Point(868, 6)
+        Me.butValidateHidden.Location = New System.Drawing.Point(1157, 7)
+        Me.butValidateHidden.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.butValidateHidden.Name = "butValidateHidden"
-        Me.butValidateHidden.Size = New System.Drawing.Size(125, 26)
+        Me.butValidateHidden.Size = New System.Drawing.Size(167, 32)
         Me.butValidateHidden.TabIndex = 6
         Me.butValidateHidden.Text = "Validate"
         Me.butValidateHidden.UseVisualStyleBackColor = True
@@ -1098,9 +1170,10 @@ Partial Class edit
         '
         Me.lbFormulaId.AutoSize = True
         Me.lbFormulaId.ForeColor = System.Drawing.Color.Green
-        Me.lbFormulaId.Location = New System.Drawing.Point(324, 14)
+        Me.lbFormulaId.Location = New System.Drawing.Point(432, 17)
+        Me.lbFormulaId.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbFormulaId.Name = "lbFormulaId"
-        Me.lbFormulaId.Size = New System.Drawing.Size(23, 17)
+        Me.lbFormulaId.Size = New System.Drawing.Size(26, 20)
         Me.lbFormulaId.TabIndex = 151
         Me.lbFormulaId.Text = "-1"
         Me.lbFormulaId.Visible = False
@@ -1113,26 +1186,16 @@ Partial Class edit
         '
         Me.dlgPrintDialog.UseEXDialog = True
         '
-        'lbAsteriks
-        '
-        Me.lbAsteriks.AutoSize = True
-        Me.lbAsteriks.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbAsteriks.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.lbAsteriks.Location = New System.Drawing.Point(103, 116)
-        Me.lbAsteriks.Name = "lbAsteriks"
-        Me.lbAsteriks.Size = New System.Drawing.Size(16, 20)
-        Me.lbAsteriks.TabIndex = 179
-        Me.lbAsteriks.Text = "*"
-        '
         'edit
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1032, 562)
+        Me.ClientSize = New System.Drawing.Size(1376, 692)
         Me.Controls.Add(Me.Panel4)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
-        Me.MinimumSize = New System.Drawing.Size(700, 500)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MinimumSize = New System.Drawing.Size(927, 605)
         Me.Name = "edit"
         Me.Text = "Details"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
