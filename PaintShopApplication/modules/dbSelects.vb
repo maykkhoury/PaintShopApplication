@@ -2812,7 +2812,6 @@ Module dbSelects
 #End Region
 
 #Region "Garage Price"
-
     Public Function getGaragePricesDB(ByVal whereStr As String) As GaragePrice()
         Dim MyArray As New ArrayList
         If openConnection() Then
@@ -2851,5 +2850,31 @@ Module dbSelects
 #End Region
 
 
+#Region "Cars and colorCode"
+    Public Function findCarIdsByColorCode(ByVal colorCode As String, ByVal contains As Boolean) As List(Of Car)
+        Dim cars As New List(Of Car)
+
+        Dim allCars As Car() = getCars("")
+        For Each car As Car In allCars
+            Dim whereStr As String
+            If contains Then
+                whereStr = " AND LCASE(colorCode) like '%" & colorCode.ToLower & "%'"
+            Else
+                whereStr = " AND LCASE(colorCode) like '" & colorCode.ToLower & "%'"
+            End If
+            Dim formulas As Formula() = getFormulas(whereStr, car.tableName, car.carName, car.id_car)
+
+            If Not formulas Is Nothing Then
+                If formulas.Length > 0 Then
+                    cars.Add(car)
+                End If
+            End If
+        Next
+
+        Return cars
+
+
+    End Function
+#End Region
 
 End Module

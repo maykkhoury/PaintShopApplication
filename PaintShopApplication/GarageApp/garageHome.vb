@@ -3,6 +3,7 @@ Imports System.Text.RegularExpressions
 Imports System.Drawing.Printing
 Imports System.IO
 Imports System.Text
+Imports System.Data.OleDb
 
 
 Public Class garageHome
@@ -228,6 +229,8 @@ Public Class garageHome
                 lsvFamily.Items(i).SubItems.Add(formulaTab(i).c_year)
                 lsvFamily.Items(i).SubItems.Add(formulaTab(i).version)
                 lsvFamily.Items(i).SubItems.Add(formulaTab(i).cardNumber)
+                lsvFamily.Items(i).SubItems.Add(formulaTab(i).id_car)
+                lsvFamily.Items(i).SubItems.Add(formulaTab(i).name_car)
                 lsvFamily.Items(i).SubItems.Add(formulaTab(i).clientName)
 
                 Dim variantExists As Boolean = False
@@ -263,7 +266,7 @@ Public Class garageHome
 
                         End If
                         lsvFamily.Items(i).SubItems.Add("")
-                        lsvFamily.Items(i).SubItems(10 + j).BackColor = getVariant(formulaVariants(j)).variantColor
+                        lsvFamily.Items(i).SubItems(12 + j).BackColor = getVariant(formulaVariants(j)).variantColor
 
                     Next
                     If 11 + j > lsvFamily.Columns.Count Then
@@ -565,14 +568,23 @@ Public Class garageHome
             cclient.Width = 0
         End If
 
-        Dim carId As Integer = lbCarIdSearch.Text
-        Dim chosenCar As Car = getCarById(carId)
-        Dim carName As String = chosenCar.carName
-        If carName Is Nothing Then
-            carName = ""
-        End If
         Dim colorCodeChk As Boolean = chkColorCode.Checked
         Dim colorCode As String = txtColorCode.Text
+        Dim cars As New List(Of Car)
+        Dim findCarFirst As Boolean = chkAllCars.Checked
+        If Not findCarFirst Then
+            Dim carId As Integer = lbCarIdSearch.Text
+            Dim chosenCar As Car = getCarById(carId)
+            cars.Add(chosenCar)
+        Else
+            cars = findCarIdsByColorCode(colorCode, colorCodeChk)
+            If cars.Count = 0 Then
+                MsgBox("No car has thie color code")
+                Return
+            End If
+        End If
+
+
 
         Dim cardNumberChk As Boolean = chkCardNumber.Checked
         Dim cardNumber As String = txtCardNumber.Text
@@ -586,10 +598,10 @@ Public Class garageHome
             Exit Sub
 
         End If
-        If (colorCode = "" Or colorCodeChk) And carName = "" Then
-            MsgBox("For a better performance, the search must be at least filtered by car ,color code or basic color, and if the filter is the color code, 'Contains' must be unchecked.", MsgBoxStyle.Exclamation)
-            Exit Sub
-        End If
+        ' If (colorCode = "" Or colorCodeChk) And carName = "" Then
+        'MsgBox("For a better performance, the search must be at least filtered by car ,color code or basic color, and if the filter is the color code, 'Contains' must be unchecked.", MsgBoxStyle.Exclamation)
+        'Exit Sub
+        'End If
 
         Dim str1 As String = ""
         If formulaName.Trim <> "" Then
@@ -691,7 +703,14 @@ Public Class garageHome
 
         startTime = Now
 
-        Dim formulasFiltered() As Formula = getFormulas(whereStr, chosenCar.tableName, chosenCar.carName, chosenCar.id_car)
+        Dim formulasFiltered() As Formula ' = getFormulas(whereStr, chosenCar.tableName, chosenCar.carName, chosenCar.id_car)
+
+        Dim tempList As New List(Of Formula)
+        For Each car As Car In cars
+            tempList.AddRange(getFormulas(whereStr, car.tableName, car.carName, car.id_car))
+        Next
+        formulasFiltered = tempList.ToArray()
+
 
         endTime = Now
         Dim duration As TimeSpan = endTime - startTime
@@ -874,6 +893,7 @@ Public Class garageHome
 
         'test if it's a client formula
         Dim clientTable As Boolean = False
+
         clientNameColumnIndex = 0
         For Each column As ColumnHeader In lsvFamily.Columns
             clientNameColumnIndex += 1
@@ -882,6 +902,13 @@ Public Class garageHome
             End If
         Next
 
+        Dim caridIndex As Integer = 0
+        For Each column As ColumnHeader In lsvFamily.Columns
+            caridIndex += 1
+            If column.Tag = "ccarid" Then
+                Exit For
+            End If
+        Next
 
         If Not lsvFamily.SelectedItems(0).SubItems(clientNameColumnIndex - 1).Text Is Nothing Then
             If lsvFamily.SelectedItems(0).SubItems(clientNameColumnIndex - 1).Text <> "" Then
@@ -889,7 +916,9 @@ Public Class garageHome
             End If
         End If
         '
-        ' Dim idCar As Long = lbCarIdSearch.Text
+        Dim idCar As Long = lsvFamily.SelectedItems(0).SubItems(caridIndex - 1).Text
+        chosenCar = getCarById(idCar)
+
         selectedFormula = getFormulaById(idFormula, oldDb, clientTable, chosenCar.tableName, chosenCar.carName, chosenCar.id_car)
         Dim fname As String = selectedFormula.name_formula
         Dim fcode As String = selectedFormula.colorCode
@@ -1096,7 +1125,7 @@ Public Class garageHome
         'edit.grpEdit.Visible = True
         Me.Visible = False
         edit.formulaDup = Nothing
-       
+
         myConsoleLog.WriteLine("goedit - open dialog start:" & Now.TimeOfDay.ToString)
 
 
@@ -1217,7 +1246,7 @@ Public Class garageHome
 
     End Sub
 
-    Private Sub doTheBackup(ByVal fileName As String, Optional showMessage As Boolean = True)
+    Private Sub generateBackupClientColors(ByVal fileName As String, Optional showMessage As Boolean = True)
         'generate backup file
         Try
             Dim objStreamWriter As StreamWriter
@@ -1346,13 +1375,59 @@ Public Class garageHome
             'Close the file.
             objStreamWriter.Close()
 
-            If showMessage Then
-                MsgBox("Backup file generated at:" & vbNewLine & fileName, MsgBoxStyle.Information)
-            End If
-            
+
         Catch ex As IOException
             MsgBox("Backup file not created:" & vbNewLine & ex.Message, MsgBoxStyle.Critical)
         End Try
+    End Sub
+
+    Private Sub generateBackupPrices(ByVal outputCsv As String, Optional showMessage As Boolean = True)
+
+        Try
+            ' Create and open the connection
+            Using conn As New OleDbConnection(conString)
+                conn.Open()
+
+                ' Query to select all data from the table
+                Dim query As String = "SELECT * FROM garagePrice"
+                Using cmd As New OleDbCommand(query, conn)
+                    Using reader As OleDbDataReader = cmd.ExecuteReader()
+                        ' Open a StreamWriter to write the CSV file
+                        Using writer As New StreamWriter(outputCsv)
+                            ' Write column headers
+                            Dim columnNames As New List(Of String)
+                            For i As Integer = 0 To reader.FieldCount - 1
+                                columnNames.Add(reader.GetName(i))
+                            Next
+                            writer.WriteLine(String.Join(",", columnNames.ToArray()))
+
+                            ' Write rows
+                            While reader.Read()
+                                Dim rowData As New List(Of String)
+                                For i As Integer = 0 To reader.FieldCount - 1
+                                    rowData.Add(reader(i).ToString().Replace(",", " ")) ' Handle commas in data
+                                Next
+                                writer.WriteLine(String.Join(",", rowData.ToArray()))
+                            End While
+                        End Using
+                    End Using
+                End Using
+                Console.WriteLine("Data exported successfully to " & outputCsv)
+            End Using
+        Catch ex As Exception
+            Console.WriteLine("Error: " & ex.Message)
+        End Try
+    End Sub
+    Private Sub doTheBackup(ByVal folder As String, Optional showMessage As Boolean = True)
+        Dim filenameClientColors As String = folder & "\\backup" & Today.Second & Today.Minute & Today.Hour & Today.Day & "-" & Today.Month & "-" & Today.Year & ".txt"
+        generateBackupClientColors(filenameClientColors, showMessage)
+        Dim filenamePrices As String = folder & "\\backup-prices" & Today.Second & Today.Minute & Today.Hour & Today.Day & "-" & Today.Month & "-" & Today.Year & ".csv"
+        generateBackupPrices(filenamePrices, showMessage)
+
+        If showMessage Then
+            MsgBox("Backup file generated at:" & vbNewLine & folder, MsgBoxStyle.Information)
+        End If
+
     End Sub
 
     Private Sub BackupCustomersToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BackupCustomersToolStripMenuItem.Click
@@ -1362,8 +1437,10 @@ Public Class garageHome
         Else
             Exit Sub
         End If
-        Dim filname As String = backupFilePath & "\\backup" & Today.Second & Today.Minute & Today.Hour & Today.Day & "-" & Today.Month & "-" & Today.Year & ".txt"
-        doTheBackup(filname)
+        '' Dim filname As String = backupFilePath & "\\backup" & Today.Second & Today.Minute & Today.Hour & Today.Day & "-" & Today.Month & "-" & Today.Year & ".txt"
+        Dim folder As String = backupFilePath
+
+        doTheBackup(folder)
 
     End Sub
     Public reintegratefilePath As String = ""
@@ -1428,14 +1505,81 @@ Public Class garageHome
     End Sub
     Private Sub RestoreBackupToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RestoreBackupToolStripMenuItem.Click
         If MsgBox("Restoring the application will cause the deletion of the current customer data, Are you sure you will restore the right backed up data?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
-            If fileDialog.ShowDialog() = DialogResult.OK Then
-                reintegratefilePath = fileDialog.FileName
+            If FBrowserGarage.ShowDialog() = DialogResult.OK Then
+                ' Get all .txt files that start with "backup"
+                Dim files As String() = Directory.GetFiles(FBrowserGarage.SelectedPath, "backup*.txt")
+
+                ' Check if any matching file is found
+                If files.Length > 0 Then
+                    ' Get the first matching file name
+                    reintegratefilePath = FBrowserGarage.SelectedPath & "\\" & Path.GetFileName(files(0))
+                    doRestoreData()
+                End If
+
+
+                ' Get all .csv files that start with "backup-prices"
+                files = Directory.GetFiles(FBrowserGarage.SelectedPath, "backup-prices*.csv")
+
+                ' Check if any matching file is found
+                If files.Length > 0 Then
+                    ' Get the first matching file name
+                    doRestorePricesData(FBrowserGarage.SelectedPath & "\\" & Path.GetFileName(files(0)))
+                End If
             Else
                 Exit Sub
             End If
 
-            doRestoreData()
+
         End If
+    End Sub
+    Private Sub doRestorePricesData(csvFileName As String)
+        Dim tableName As String = "garagePrice"
+        Try
+            ' Open database connection
+            Using conn As New OleDbConnection(conString)
+                conn.Open()
+
+                ' Step 1: Empty the table (AutoNumber values reset automatically)
+                Dim deleteQuery As String = "DELETE FROM " & tableName
+                Using deleteCmd As New OleDbCommand(deleteQuery, conn)
+                    deleteCmd.ExecuteNonQuery()
+                End Using
+                Console.WriteLine("Table emptied successfully.")
+
+                ' Step 2: Read the CSV file
+                Dim lines As String() = File.ReadAllLines(csvFileName)
+                If lines.Length < 2 Then
+                    Console.WriteLine("CSV file is empty or only contains headers.")
+                    Return
+                End If
+
+                ' Step 3: Prepare the INSERT SQL command (excluding id_garagePrice)
+                Dim insertQuery As String = "INSERT INTO " & tableName & " (id_color, garage_price, id_currency, id_unit) VALUES (?, ?, ?, ?)"
+                Using cmd As New OleDbCommand(insertQuery, conn)
+                    ' Loop through CSV rows (skip header)
+                    For i As Integer = 1 To lines.Length - 1
+                        Dim values As String() = lines(i).Split(","c)
+
+                        ' Ensure there are enough values
+                        If values.Length < 4 Then Continue For
+
+                        ' Add parameters (skip id_garagePrice)
+                        cmd.Parameters.Clear()
+                        cmd.Parameters.AddWithValue("?", Convert.ToInt32(values(1))) ' id_color
+                        cmd.Parameters.AddWithValue("?", Convert.ToDecimal(values(2))) ' garage_price
+                        cmd.Parameters.AddWithValue("?", Convert.ToInt32(values(3))) ' id_currency
+                        cmd.Parameters.AddWithValue("?", Convert.ToInt32(values(4))) ' id_unit
+
+                        ' Execute the insert query
+                        cmd.ExecuteNonQuery()
+                    Next
+                End Using
+
+                Console.WriteLine("Prices restored successfully from CSV.")
+            End Using
+        Catch ex As Exception
+            Console.WriteLine("Error: " & ex.Message)
+        End Try
     End Sub
     Private Sub ReintegrateThread(parameters As Object)
         Try
@@ -1619,50 +1763,48 @@ Public Class garageHome
 
                 End If
             Loop
-
-                Dim fromFetchingDataOnline As Boolean = False
-                Try
-                    objStreamReader.Close()
-                    If Not parameters Is Nothing Then
-                        If parameters.length > 1 Then
-                            fromFetchingDataOnline = True
-                            Dim filenameToDelete As String = parameters(1)
-                            File.Delete(filenameToDelete)
-                        End If
+            Dim fromFetchingDataOnline As Boolean = False
+            Try
+                objStreamReader.Close()
+                If Not parameters Is Nothing Then
+                    If parameters.length > 1 Then
+                        fromFetchingDataOnline = True
+                        Dim filenameToDelete As String = parameters(1)
+                        File.Delete(filenameToDelete)
                     End If
-                Catch ex As Exception
-
-                End Try
-
-
-                Try
-                    prgUpdate.Value = 0
-                Catch ex As Exception
-                    MsgBox(ex.Message)
-                End Try
-
-                If errors.Trim = "" Then
-                    If fromFetchingDataOnline Then
-                        MsgBox("Your Data has been successfully updated:" & vbNewLine & "Please restart your application", MsgBoxStyle.Information)
-                    Else
-                        MsgBox("Your application has been successfully restored:" & vbNewLine & "Please restart your application", MsgBoxStyle.Information)
-                    End If
-
-                Else
-                    writeLogfile(errors, reintegratefilePath & ".log")
-                    MsgBox("Your application has not been successfully restored, some errors occured, please check the log file at (" & reintegratefilePath & ".log", MsgBoxStyle.Information)
                 End If
-                ' butBrowseUpdate.Enabled = True
-                'butUpdateApp.Enabled = True
-                'butBackup.Enabled = True
-                'butReintegrate.Enabled = True
-                butGo.Enabled = True
-                menFile.Enabled = True
-                lsvFamily.Enabled = True
-                thread.Abort()
-                thread2.Abort()
-                Me.Close()
-                'Close the file.
+            Catch ex As Exception
+
+            End Try
+
+
+            Try
+                prgUpdate.Value = 0
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+            If errors.Trim = "" Then
+                If fromFetchingDataOnline Then
+                    MsgBox("Your Data has been successfully updated:" & vbNewLine & "Please restart your application", MsgBoxStyle.Information)
+                Else
+                    MsgBox("Your application has been successfully restored:" & vbNewLine & "Please restart your application", MsgBoxStyle.Information)
+                End If
+
+            Else
+                writeLogfile(errors, reintegratefilePath & ".log")
+                MsgBox("Your application has not been successfully restored, some errors occured, please check the log file at (" & reintegratefilePath & ".log", MsgBoxStyle.Information)
+            End If
+            ' butBrowseUpdate.Enabled = True
+            'butUpdateApp.Enabled = True
+            'butBackup.Enabled = True
+            'butReintegrate.Enabled = True
+            butGo.Enabled = True
+            menFile.Enabled = True
+            lsvFamily.Enabled = True
+            thread.Abort()
+            thread2.Abort()
+            Me.Close()
+            'Close the file.
         Catch ex As IOException
             butGo.Enabled = True
             menFile.Enabled = True
@@ -1700,6 +1842,18 @@ Public Class garageHome
 
     End Sub
 
+    Private Sub chkAllCars_CheckedChanged(sender As Object, e As EventArgs) Handles chkAllCars.CheckedChanged
+        If chkAllCars.Checked Then
+            cmbCarNameSearch.Enabled = False
+            cmbCarNameSearch.Visible = False
+            lbAllCarsMode.Visible = True
+        Else
+            cmbCarNameSearch.Enabled = True
+            cmbCarNameSearch.Visible = True
+            lbAllCarsMode.Visible = False
+        End If
+    End Sub
+
     Private Sub ImportPricesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImportPricesToolStripMenuItem.Click
         importPrices.ShowDialog()
     End Sub
@@ -1723,7 +1877,7 @@ Public Class garageHome
 
         'do the backup
         closeConnection()
-        Dim filname As String = System.AppDomain.CurrentDomain.BaseDirectory() & "\\backup" & Now.Second & Now.Minute & Now.Hour & Today.Day & "-" & Today.Month & "-" & Today.Year & ".txt"
+        Dim filname As String = System.AppDomain.CurrentDomain.BaseDirectory()
         doTheBackup(filname, False)
 
         'restoring the backup
